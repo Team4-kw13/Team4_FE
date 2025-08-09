@@ -1,41 +1,41 @@
-name: CI/CD Pipeline
+name: PR rules
 
 # 이벤트 트리거 설정: main 브랜치에 push가 발생하거나,
 # 모든 브랜치에 pull request가 열릴 때 워크플로가 실행됨
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 jobs:
   build_and_test:
     # 이 작업이 실행될 가상 환경을 지정
     runs-on: ubuntu-latest
-    
+
     # 작업에 포함될 단계들을 정의합니다.
     steps:
       # 저장소 코드를 체크아웃하는 단계
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       # Node.js 환경을 설정하는 단계 (캐싱 포함)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'npm'
-          
+          node-version: "22"
+          cache: "npm"
+
       # 종속성을 설치하는 단계
       - name: Install dependencies
         run: npm install
-        
+
       # 애플리케이션을 lint 검사와 빌드하는 단계
       - name: Build and Lint
         run: |
           npm run build
           npm run lint
-      
+
       # lint 검사 실행
       - name: Run lint
         run: npm run lint
