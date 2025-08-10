@@ -1,5 +1,3 @@
-/* eslint-disable unused-imports/no-unused-imports */
-
 import { createRoot } from 'react-dom/client'
 
 import App from './App.jsx'
