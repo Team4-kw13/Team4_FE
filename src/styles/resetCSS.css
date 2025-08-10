@@ -85,6 +85,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 
 article,
@@ -99,9 +100,14 @@ menu,
 nav,
 section {
   display: block;
+  box-sizing: border-box;
 }
 body {
   line-height: 1;
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 ol,
 ul {
