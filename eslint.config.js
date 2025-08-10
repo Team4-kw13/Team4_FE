@@ -38,10 +38,9 @@ export default defineConfig([
     },
 
     settings: {
+      react: { version: 'detect' },
       'import/resolver': {
-        node: {
-          extensions: ['.js', '.jsx'],
-        },
+        node: { extensions: ['.js', '.jsx'] },
       },
       'import/extensions': ['.js', '.jsx'],
     },
