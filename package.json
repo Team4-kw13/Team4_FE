@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "generate:icons": "node src/scripts/generate-icon-map.js",
+    "predev": "npm run generate:icons",
+    "prebuild": "npm run generate:icons",
     "dev": "vite",
     "build": "npm run lint && vite build",
     "lint": "eslint .",
@@ -11,7 +14,8 @@
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "vite-plugin-svgr": "^4.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
