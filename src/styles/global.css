@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'freesentation';
-  src: url('/fonts/Freesentation-Bold.ttf') format('true-type');
+  src: url('/fonts/Freesentation-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: 'freesentation';
-  src: url('/fonts/Freesentation-Medium.ttf') format('true-type');
+  src: url('/fonts/Freesentation-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: 'freesentation';
-  src: url('/fonts/Freesentation-Regular.ttf') format('true-type');
+  src: url('/fonts/Freesentation-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
