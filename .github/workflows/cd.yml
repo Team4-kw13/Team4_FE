@@ -31,3 +31,13 @@ jobs:
           # 현재 main 체크아웃 보장
           git checkout main
           git push personal main --force
+
+      - name: Create export branch without workflows
+        run: |
+          git checkout -b export-for-personal
+          git rm -r --cached .github || true
+          git commit -m "chore: exclude .github for personal mirror" || true
+
+      - name: Push to personal main
+        run: |
+          git push personal export-for-personal:main --force
