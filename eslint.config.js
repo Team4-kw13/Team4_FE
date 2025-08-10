@@ -41,6 +41,10 @@ export default defineConfig([
       react: { version: 'detect' },
       'import/resolver': {
         node: { extensions: ['.js', '.jsx'] },
+        alias: {
+          map: [['@', './src']],
+          extensions: ['.js', '.jsx'],
+        },
       },
       'import/extensions': ['.js', '.jsx'],
     },

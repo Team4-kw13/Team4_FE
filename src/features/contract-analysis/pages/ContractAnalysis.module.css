@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.back-button {
+  margin: 48px 16px 24px;
+}
+
+.analysis-step {
+  flex-grow: 1;
+  overflow: scroll;
+}
+
+.start-button {
+  flex-shrink: 0;
+  margin-top: 8px;
+  margin-bottom: 36px;
+}
