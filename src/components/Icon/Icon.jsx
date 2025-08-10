@@ -4,7 +4,7 @@ import { iconMap } from './iconMap'
 /**
  * 지정한 name에 해당하는 SVG 아이콘을 렌더링하는 컴포넌트
  *
- * /**
+ *
  * @param {{
  *   name: IconName,
  *   width?: number,
