@@ -11,7 +11,7 @@ import eslintPluginUnusedImports from 'eslint-plugin-unused-imports'
 import globals from 'globals'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'src/components/Icon/iconMap.js']),
 
   js.configs.recommended,
   react.configs.flat.recommended,
@@ -38,10 +38,9 @@ export default defineConfig([
     },
 
     settings: {
+      react: { version: 'detect' },
       'import/resolver': {
-        node: {
-          extensions: ['.js', '.jsx'],
-        },
+        node: { extensions: ['.js', '.jsx'] },
       },
       'import/extensions': ['.js', '.jsx'],
     },
@@ -102,6 +101,9 @@ export default defineConfig([
         },
       ],
       'simple-import-sort/exports': 'warn',
+
+      // ----------  PropTypes 강제 검사 비활성화 ----------
+      'react/prop-types': 'off',
     },
   },
 ])
