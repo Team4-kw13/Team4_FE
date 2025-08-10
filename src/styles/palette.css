@@ -1,0 +1,22 @@
+:root {
+  /* 메인 컬러 */
+  --color-primary: #ffc107;
+
+  /* 메인 배경 컬러 */
+  --color-primary-bg: #ffd454;
+
+  /* 서브 배경 컬러 */
+  --color-secondary-bg: #ffe69d;
+
+  /* 포인트 컬러 */
+  --color-accent: #ffa100;
+
+  /* 텍스트 컬러 */
+  --color-text: #1a1a1a;
+
+  /* 서브 텍스트 컬러 */
+  --color-sub-text: #545454;
+
+  /* 메인 소개 텍스트 */
+  --color-background: #ffffff;
+}

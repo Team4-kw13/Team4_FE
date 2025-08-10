@@ -1,0 +1,19 @@
+button {
+  border: none;
+  outline: none;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  text-align: center;
+  text-transform: none;
+  text-indent: 0;
+  text-shadow: none;
+}

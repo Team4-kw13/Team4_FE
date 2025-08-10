@@ -12,14 +12,15 @@ import globals from 'globals'
 
 export default defineConfig([
   globalIgnores(['dist']),
+
+  js.configs.recommended,
+  react.configs.flat.recommended,
+  reactHooks.configs['recommended-latest'],
+  reactRefresh.configs.vite,
+  eslintConfigPrettier,
+
   {
     files: ['src/**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-      eslintConfigPrettier,
-    ],
 
     languageOptions: {
       ecmaVersion: 'latest',
@@ -34,6 +35,15 @@ export default defineConfig([
       'unused-imports': eslintPluginUnusedImports, // 미사용 import 자동 처리
       'simple-import-sort': eslintPluginSimpleImportSort, // import 정렬 전용
       'jsx-a11y': eslintPluginJsxA11y, // 접근성 규칙
+    },
+
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.jsx'],
+        },
+      },
+      'import/extensions': ['.js', '.jsx'],
     },
 
     rules: {
