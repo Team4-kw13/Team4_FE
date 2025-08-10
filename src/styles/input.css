@@ -1,0 +1,7 @@
+input,
+textarea {
+  box-sizing: border-box;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
