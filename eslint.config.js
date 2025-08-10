@@ -14,7 +14,7 @@ export default defineConfig([
   globalIgnores(['dist']),
 
   js.configs.recommended,
-  react.configs.recommended,
+  react.configs.flat.recommended,
   reactHooks.configs['recommended-latest'],
   reactRefresh.configs.vite,
   eslintConfigPrettier,
