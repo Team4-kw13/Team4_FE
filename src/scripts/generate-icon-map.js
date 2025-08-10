@@ -64,7 +64,7 @@ const generateIconMap = () => {
   const folders = getAssetFolders(ASSETS_DIR)
 
   for (const folder of folders) {
-    const { imports, mapEntries } = collectIconsFromFolder(folder)
+    const { imports, mapEntries } = collectIconsFromFolder(folder, ASSETS_DIR)
     allImports = allImports.concat(imports)
     allMapEntries = allMapEntries.concat(mapEntries)
   }
