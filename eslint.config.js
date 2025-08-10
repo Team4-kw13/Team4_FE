@@ -12,15 +12,15 @@ import globals from 'globals'
 
 export default defineConfig([
   globalIgnores(['dist']),
+
+  js.configs.recommended,
+  react.configs.recommended,
+  reactHooks.configs['recommended-latest'],
+  reactRefresh.configs.vite,
+  eslintConfigPrettier,
+
   {
     files: ['src/**/*.{js,jsx}'],
-    extends: [
-      react.configs.recommended,
-      js.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-      eslintConfigPrettier,
-    ],
 
     languageOptions: {
       ecmaVersion: 'latest',
