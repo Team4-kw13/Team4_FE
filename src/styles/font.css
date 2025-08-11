@@ -9,14 +9,6 @@
   --font-common-title-weight: 700;
   --font-common-title-size: 24px;
 
-  /** 홈화면 버튼 제목 */
-  --font-home-button-title-weight: 700;
-  --font-home-button-title-size: 20px;
-
-  /** 홈화면 버튼 세부내용 */
-  --font-home-button-detail-weight: 400;
-  --font-home-button-detail-size: 16px;
-
   /** 계약서분석(메인) 소개 제목 */
   --font-analysis-main-title-weight: 700;
   --font-analysis-main-title-size: 20px;
@@ -29,31 +21,27 @@
   --font-popup-title-weight: 700;
   --font-popup-title-size: 24px;
 
-  /** 팝업 세부내용 */
+  /** 팝업 세부내용, 안내문구 */
   --font-popup-detail-weight: 500;
   --font-popup-detail-size: 16px;
 
-  /** 계약서 AI 주의 문구 */
-  --font-caution-analysis-weight: 500;
-  --font-caution-analysis-size: 12px;
-
-  /** 요약 세부내용 1&3 */
-  --font-summary-detail-13-weight: 700;
-  --font-summary-detail-13-size: 16px;
-
-  /** 요약 세부내용 2&4 */
-  --font-summary-detail-24-weight: 400;
-  --font-summary-detail-24-size: 16px;
-
   /** 리스트 제목 */
-  --font-list-title-weight: 500;
-  --font-list-title-size: 20px;
+  --font-list-title-weight: 700;
+  --font-list-title-size: 18px;
 
   /** 리스트 세부내용 */
   --font-list-detail-weight: 400;
-  --font-list-detail-size: 16px;
+  --font-list-detail-size: 14px;
 
-  /** 법률 변호사 광고 */
-  --font-lawyer-advertisement-weight: 400;
-  --font-lawyer-advertisement-size: 12px;
+  /** AI요약 1.항목 제목 **/
+  --font--ai-section-title-weight: 700;
+  --font--ai-section-title-size: 18px;
+
+  /** AI요약 2.주의할점 **/
+  --font--ai-caution-title-weight: 700;
+  --font--ai-caution-title-size: 16px;
+
+  /** AI요약 3&4 **/
+  --font-ai-summary-weight: 400;
+  --font-ai-summary-size: 14px;
 }

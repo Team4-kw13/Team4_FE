@@ -11,6 +11,9 @@
   /* 포인트 컬러 */
   --color-accent: #ffa100;
 
+  /* 리스트, 마이페이지 배경 컬러 */
+  --color-list-mypage-bg: #fffbed;
+
   /* 텍스트 컬러 */
   --color-text: #1a1a1a;
 
@@ -19,4 +22,13 @@
 
   /* 메인 소개 텍스트 */
   --color-background: #ffffff;
+
+  /* 계약서분석제목 */
+  --color-analysis-title: #6d4c41;
+
+  /* 변호사세부내용 */
+  --color-laywer-detail: #b9b9b9;
+
+  /* 그림자 */
+  --color-shadow: #ffffff;
 }
