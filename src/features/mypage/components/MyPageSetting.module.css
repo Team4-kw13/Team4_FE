@@ -1,10 +1,9 @@
 .container {
   background-color: #fff;
   border-radius: 32px;
-  width: 303px;
   height: 95px;
   padding: 24px 24px 20px 24px;
-  margin: 16px auto;
+  margin: 16px 36px;
   box-shadow: var(--shadow-default);
   display: flex;
   flex-direction: column;

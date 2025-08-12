@@ -1,9 +1,8 @@
 .container {
   background-color: white;
   border-radius: 32px;
-  width: 303px;
   padding: 30px 24px;
-  margin: 16px auto;
+  margin: 16px 36px;
 }
 
 .inner-container {
