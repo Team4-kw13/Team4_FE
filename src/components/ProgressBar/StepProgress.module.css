@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px;
+  align-items: center;
+}
+
+.segment {
+  display: inline-block;
+  height: 4px;
+  border-radius: 32px;
+  background-color: var(--color-sub-text);
+}
+
+.active {
+  background: var(--color-primary-bg);
+}

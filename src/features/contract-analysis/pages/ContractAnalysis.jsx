@@ -1,7 +1,7 @@
 import { BackButton } from '@/components/BackButton/BackButton'
+import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
 
 import { ContractAnalysisHeader } from '../components/ContractAnalysisHeader'
-import { ContractAnalysisStartButton } from '../components/ContractAnalysisStartButton'
 import { ContractAnalysisStepList } from '../components/ContractAnalysisStepList'
 
 import styles from './ContractAnalysis.module.css'
@@ -13,13 +13,16 @@ export const ContractAnalysis = () => {
         <BackButton />
       </nav>
 
-      <section className={styles['analysis-step']}>
+      <section className={styles['header']}>
         <ContractAnalysisHeader />
+      </section>
+
+      <section className={styles['analysis-step']}>
         <ContractAnalysisStepList />
       </section>
 
       <div className={styles['start-button']}>
-        <ContractAnalysisStartButton />
+        <PrimaryButton size='lg' label='시작하기' />
       </div>
     </div>
   )
