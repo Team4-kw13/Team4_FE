@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
-import { ContractAnalysis } from '../features/contract-analysis/pages/ContractAnalysis'
+import { ContractAnalysis } from '../features/contract-analysis/main/pages/ContractAnalysis'
 import { MyPage } from '../features/mypage/pages/MyPage'
 
 import { ROUTES } from './routes.constant'
