@@ -1,17 +1,13 @@
-.container {
-}
-
 .header {
   margin: 16px 36px 18px;
   font-size: var(--font-common-title-size);
   font-weight: var(--font-common-title-weight);
 }
 
-.analysis-image {
+.analysis-section {
   position: relative;
   margin: 0 36px;
   aspect-ratio: 16 / 23;
-  background-color: lightgrey;
 }
 
 .progress {
