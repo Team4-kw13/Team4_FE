@@ -1,29 +1,22 @@
 import { BackButton } from '@/components/BackButton/BackButton'
-import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
+import { useStep } from '@/stores/useStep'
 
-import { ContractAnalysisHeader } from '../components/ContractAnalysisHeader'
-import { ContractAnalysisStepList } from '../components/ContractAnalysisStepList'
+import { ContractAnalysisMain } from '../main/pages/ContractAnalysisMain'
+import { ContractAnalysisUpload } from '../upload/pages/ContractAnalysisUpload'
 
 import styles from './ContractAnalysis.module.css'
 
 export const ContractAnalysis = () => {
+  const { currentStep, goToNextStep, goToPrevStep, reset } = useStep(3)
+
   return (
     <div className={styles['container']}>
       <nav className={styles['back-button']}>
-        <BackButton />
+        <BackButton onClick={goToPrevStep} />
       </nav>
 
-      <section className={styles['header']}>
-        <ContractAnalysisHeader />
-      </section>
-
-      <section className={styles['analysis-step']}>
-        <ContractAnalysisStepList />
-      </section>
-
-      <div className={styles['start-button']}>
-        <PrimaryButton size='lg' label='시작하기' />
-      </div>
+      {currentStep === 1 && <ContractAnalysisMain goToNextStep={goToNextStep} />}
+      {currentStep === 2 && <ContractAnalysisUpload goToNextStep={goToNextStep} />}
     </div>
   )
 }

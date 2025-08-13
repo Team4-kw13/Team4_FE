@@ -1,0 +1,27 @@
+.header {
+  margin: 48px auto 0;
+  font-size: var(--font-common-title-size);
+  font-weight: var(--font-common-title-weight);
+}
+
+.image-button {
+  margin-top: 72px;
+}
+
+.scroll-section {
+  overflow: scroll;
+  flex-grow: 1;
+}
+
+.hint {
+  margin-top: 48px;
+  font-size: var(--font-popup-detail-size);
+  font-weight: var(--font-popup-detail-weight);
+  text-align: center;
+  white-space: pre-line;
+}
+
+.analysis-button {
+  flex-shrink: 0;
+  margin: 8px auto 36px;
+}

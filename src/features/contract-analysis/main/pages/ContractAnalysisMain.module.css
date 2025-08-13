@@ -1,0 +1,14 @@
+.header {
+  margin: 0 36px 30px;
+}
+
+.analysis-step {
+  padding: 30px 0;
+  flex-grow: 1;
+  overflow: scroll;
+}
+
+.start-button {
+  flex-shrink: 0;
+  margin: 8px auto 36px;
+}
