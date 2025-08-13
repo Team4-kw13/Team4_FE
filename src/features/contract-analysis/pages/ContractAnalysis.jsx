@@ -2,6 +2,7 @@ import { BackButton } from '@/components/BackButton/BackButton'
 import { useStep } from '@/stores/useStep'
 
 import { ContractAnalysisMain } from '../main/pages/ContractAnalysisMain'
+import { ContractAnalysisUpload } from '../upload/pages/ContractAnalysisUpload'
 
 import styles from './ContractAnalysis.module.css'
 
@@ -15,6 +16,7 @@ export const ContractAnalysis = () => {
       </nav>
 
       {currentStep === 1 && <ContractAnalysisMain goToNextStep={goToNextStep} />}
+      {currentStep === 2 && <ContractAnalysisUpload goToNextStep={goToNextStep} />}
     </div>
   )
 }
