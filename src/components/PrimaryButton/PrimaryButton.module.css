@@ -1,0 +1,25 @@
+.base {
+  display: grid;
+  place-items: center;
+  color: white;
+  background-color: var(--color-primary);
+  border-radius: 32px;
+}
+
+.lg {
+  max-width: 285px;
+  padding: 11px 80px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sm {
+  padding: 13.5px 28.5px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.disabled {
+  background-color: var(--color-secondary-bg);
+  cursor: no-drop;
+}
