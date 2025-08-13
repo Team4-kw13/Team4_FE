@@ -14,7 +14,7 @@ export const ContractAnalysis = () => {
         <BackButton onClick={goToPrevStep} />
       </nav>
 
-      <ContractAnalysisMain />
+      {currentStep === 1 && <ContractAnalysisMain goToNextStep={goToNextStep} />}
     </div>
   )
 }
