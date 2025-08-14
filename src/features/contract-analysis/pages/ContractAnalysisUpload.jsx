@@ -1,9 +1,8 @@
-import { useState } from 'react'
-
 import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
 
 import { ImageUploadButton } from '../components/ImageUploadButton'
-import { TOTAL_IMAGE_COUNT } from '../constants/constants'
+import { TOTAL_IMAGE_COUNT } from '../constants/imageCount'
+import { useUploadedImages } from '../hooks/useUploadedImages'
 
 import styles from './ContractAnalysisUpload.module.css'
 
@@ -20,13 +19,15 @@ import styles from './ContractAnalysisUpload.module.css'
  */
 
 export const ContractAnalysisUpload = ({ goToNextStep }) => {
-  const [files, setFiles] = useState([])
+  // const [files, setFiles] = useState([])
 
-  const handleFileChange = (event) => {
-    const selectedFiles = Array.from(event.target.files)
-    const updatedFiles = [...files, ...selectedFiles].slice(0, TOTAL_IMAGE_COUNT)
-    setFiles(updatedFiles)
-  }
+  // const handleFileChange = (event) => {
+  //   const selectedFiles = Array.from(event.target.files)
+  //   const updatedFiles = [...files, ...selectedFiles].slice(0, TOTAL_IMAGE_COUNT)
+  //   setFiles(updatedFiles)
+  // }
+
+  const { items } = useUploadedImages()
 
   return (
     <>
@@ -36,7 +37,7 @@ export const ContractAnalysisUpload = ({ goToNextStep }) => {
 
       <div className={styles['scroll-section']}>
         <section className={styles['image-button']}>
-          <ImageUploadButton onChange={handleFileChange} currentFileCount={files.length} />
+          <ImageUploadButton />
         </section>
 
         <p className={styles['hint']}>
@@ -48,7 +49,7 @@ export const ContractAnalysisUpload = ({ goToNextStep }) => {
         <PrimaryButton
           size='lg'
           label='분석하기'
-          disabled={files.length !== TOTAL_IMAGE_COUNT}
+          disabled={items.length !== TOTAL_IMAGE_COUNT}
           onClick={goToNextStep}
         />
       </div>

@@ -1,0 +1,25 @@
+.button {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+}
+
+.tooltip-message {
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--color-sub-text);
+  text-align: center;
+  white-space: pre-line;
+}
+
+.tooltip-container {
+  position: absolute;
+  width: max-content;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 11px 14.5px;
+  border-radius: 32px;
+  background-color: white;
+  box-shadow: var(--shadow-default);
+}

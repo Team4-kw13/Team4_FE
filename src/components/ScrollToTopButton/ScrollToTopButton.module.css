@@ -1,0 +1,16 @@
+.button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #ffc10780;
+  transform: rotate(-90deg);
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.5);
+}
