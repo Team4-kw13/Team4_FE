@@ -18,7 +18,7 @@ import styles from './PrimaryButton.module.css'
  *
  * @param {PrimaryButtonProps} props
  */
-export function PrimaryButton({
+export const PrimaryButton = ({
   size = 'lg',
   label,
   disabled = false,
@@ -27,7 +27,7 @@ export function PrimaryButton({
   ariaLabel,
   onClick,
   ...rest
-}) {
+}) => {
   const classNames = cx(styles['base'], styles[size], { [styles.disabled]: disabled }, className)
 
   return (
