@@ -1,6 +1,4 @@
-import testImg1 from '@/assets/test/test1.png'
-import testImg2 from '@/assets/test/test2.png'
-import testImg3 from '@/assets/test/test3.png'
+import { useUploadedImages } from '../../upload/hooks/useUploadedImages'
 
 import styles from './ContractAnalysisImageSlide.module.css'
 
@@ -18,18 +16,22 @@ import styles from './ContractAnalysisImageSlide.module.css'
  */
 
 export const ContractAnalysisImageSlide = ({ slideRefs }) => {
-  const images = [testImg1, testImg2, testImg3]
+  const { items } = useUploadedImages()
 
   return (
     <div className={styles['container']}>
-      {images.map((image, index) => (
+      {items.map(({ id, previewUrl }, index) => (
         <div
-          key={index}
+          key={id}
           ref={slideRefs[index]}
           data-index={index + 1}
           className={styles['image-container']}
         >
-          <img src={image} alt={`계약서 이미지${index}`} className={styles['analysis-image']} />
+          <img
+            src={previewUrl}
+            alt={`계약서 이미지${index}`}
+            className={styles['analysis-image']}
+          />
         </div>
       ))}
     </div>

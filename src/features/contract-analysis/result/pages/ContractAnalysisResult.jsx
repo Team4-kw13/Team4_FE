@@ -9,26 +9,36 @@ import { useScrollSnap } from '../hooks/useScrollSnap'
 
 import styles from './ContractAnalysisResult.module.css'
 
+const PAGES = [
+  { label: '번역 섹션', components: <ContractAnalysisTranslate /> },
+  { label: '하이라이트 섹션', components: <ContractAnalysisHighlight /> },
+  { label: '요약 섹션', components: <ContractAnalysisSummary /> },
+]
+
 export const ContractAnalysisResult = () => {
   const carouselRef = useRef(null)
-  const { currentStep, setStep } = useStep()
+  const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
-  useScrollSnap(carouselRef, setStep, `.${styles['snap-item']}`)
+  const { setStep } = useStep()
+
+  useScrollSnap(carouselRef, slideRefs, setStep)
 
   return (
     <>
       <div className={styles['background']} />
 
       <section ref={carouselRef} className={styles['carousel-container']}>
-        <div className={styles['snap-item']} data-index={1} aria-label='번역 섹션'>
-          <ContractAnalysisTranslate />
-        </div>
-        <div className={styles['snap-item']} data-index={2} aria-label='하이라이트 섹션'>
-          <ContractAnalysisHighlight />
-        </div>
-        <div className={styles['snap-item']} data-index={3} aria-label='요약 섹션'>
-          <ContractAnalysisSummary />
-        </div>
+        {PAGES.map(({ label, components }, index) => (
+          <div
+            key={label}
+            ref={slideRefs[index]}
+            className={styles['snap-item']}
+            data-index={index + 1}
+            aria-label={label}
+          >
+            {components}
+          </div>
+        ))}
       </section>
     </>
   )

@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import { Icon } from '@/components/Icon/Icon'
 
 import { TOTAL_IMAGE_COUNT } from '../constants/constants'
+import { useUploadedImages } from '../hooks/useUploadedImages'
 
 import styles from './ImageUploadButton.module.css'
 
@@ -21,6 +22,7 @@ import styles from './ImageUploadButton.module.css'
 
 export const ImageUploadButton = ({ currentFileCount, onChange }) => {
   const fileInputRef = useRef(null)
+  const { items, handleInputChange } = useUploadedImages()
 
   const handleClick = () => {
     fileInputRef.current.click()
@@ -34,12 +36,12 @@ export const ImageUploadButton = ({ currentFileCount, onChange }) => {
         accept='image/*'
         multiple
         style={{ display: 'none' }}
-        onChange={onChange}
+        onChange={handleInputChange}
       />
 
       <Icon name='file' width={32} height={32} />
       <span className={styles['counter']}>
-        {currentFileCount} / {TOTAL_IMAGE_COUNT}
+        {items.length} / {TOTAL_IMAGE_COUNT}
       </span>
     </div>
   )
