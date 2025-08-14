@@ -9,7 +9,7 @@ import { useScrollSnap } from '../hooks/useScrollSnap'
 
 import styles from './ContractAnalysisResult.module.css'
 
-const PAGES = [
+const RESULT_SECTIONS = [
   { label: '번역 섹션', components: <ContractAnalysisTranslate /> },
   { label: '하이라이트 섹션', components: <ContractAnalysisHighlight /> },
   { label: '요약 섹션', components: <ContractAnalysisSummary /> },
@@ -26,10 +26,9 @@ export const ContractAnalysisResult = () => {
   return (
     <>
       <div className={styles['background']} />
-
-      <section ref={carouselRef} className={styles['carousel-container']}>
-        {PAGES.map(({ label, components }, index) => (
-          <div
+      <div ref={carouselRef} className={styles['carousel-container']}>
+        {RESULT_SECTIONS.map(({ label, components }, index) => (
+          <section
             key={label}
             ref={slideRefs[index]}
             className={styles['snap-item']}
@@ -37,9 +36,9 @@ export const ContractAnalysisResult = () => {
             aria-label={label}
           >
             {components}
-          </div>
+          </section>
         ))}
-      </section>
+      </div>
     </>
   )
 }
