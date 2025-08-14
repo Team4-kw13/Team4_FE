@@ -13,7 +13,7 @@ import styles from './ContractAnalysis.module.css'
 /**
  * 계약서 분석 플로우의 루트 컨테이너
  *
- * - 페이지 진입 시 `reset()`으로 스텝 상태를 초기화 (항상 1단계부터 시작)
+ * - 페이지 진입 시 `reset()`으로 스텝 상태를 초기화
  * - 업로드된 이미지 전역 상태를 `UploadedImagesProvider`로 감쌈
  *
  * @returns {JSX.Element}
@@ -23,10 +23,8 @@ export const ContractAnalysis = () => {
   const { currentStep, goToNextStep, goToPrevStep, reset } = useStep(3)
 
   useEffect(() => {
-    if (currentStep !== 1) {
-      reset()
-    }
-  }, [currentStep, reset])
+    reset()
+  }, [reset])
 
   return (
     <UploadedImagesProvider>
