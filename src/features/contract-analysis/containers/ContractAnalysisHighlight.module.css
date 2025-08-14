@@ -1,2 +1,23 @@
-.container {
+.header {
+  margin: 16px 36px 18px;
+  font-size: var(--font-common-title-size);
+  font-weight: var(--font-common-title-weight);
+}
+
+.analysis-section {
+  position: relative;
+  margin: 0 36px;
+  aspect-ratio: 16 / 23;
+}
+
+.progress {
+  position: absolute;
+  left: 67px;
+  right: 67px;
+  bottom: 12px;
+  z-index: 10;
+}
+
+.underline {
+  background: linear-gradient(to top, rgba(255, 161, 0, 0.7) 8px, transparent 0);
 }
