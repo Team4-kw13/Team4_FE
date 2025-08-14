@@ -7,7 +7,7 @@ import { UploadedImagesContext } from './UploadedImagesProvider'
  * @returns {import('./UploadedImagesProvider').UploadedImagesContextValue}
  */
 
-export const useUploadedImagesContextUnsafe = () => {
+export const useUploadedImagesContext = () => {
   const context = useContext(UploadedImagesContext)
   if (!context) {
     throw new Error('useUploadedImages는 UploadedImagesProvider 내부에서만 사용 가능합니다.')

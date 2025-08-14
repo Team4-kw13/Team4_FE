@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { useUploadedImagesContextUnsafe } from '../../stores/useUploadedImagesContextUnsafe'
+import { useUploadedImagesContext } from '../stores/useUploadedImagesContext'
 
 /**
  * 업로드 이미지 전역 상태를 쓰기 위한 훅
@@ -15,7 +15,7 @@ import { useUploadedImagesContextUnsafe } from '../../stores/useUploadedImagesCo
  */
 
 export const useUploadedImages = () => {
-  const { items, addFiles, removeById, clear } = useUploadedImagesContextUnsafe()
+  const { items, addFiles, removeById, clear } = useUploadedImagesContext()
 
   const handleInputChange = useCallback(
     (e) => {
