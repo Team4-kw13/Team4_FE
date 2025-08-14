@@ -1,8 +1,18 @@
 import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
 
 import { ImageUploadButton } from '../components/ImageUploadButton'
+import {
+  OCR_DUMMY_DATA_PAGE1,
+  OCR_DUMMY_DATA_PAGE2,
+  OCR_DUMMY_DATA_PAGE3,
+  SUMMARY_DUMMY_DATA,
+  TRANSLATION_DUMMY_DATA_PAGE1,
+  TRANSLATION_DUMMY_DATA_PAGE2,
+  TRANSLATION_DUMMY_DATA_PAGE3,
+} from '../constants/dummy'
 import { TOTAL_IMAGE_COUNT } from '../constants/imageCount'
 import { useUploadedImages } from '../hooks/useUploadedImages'
+import { useDocumentAnalysisContext } from '../stores/useDocumentAnalysisContext'
 
 import styles from './ContractAnalysisUpload.module.css'
 
@@ -19,15 +29,19 @@ import styles from './ContractAnalysisUpload.module.css'
  */
 
 export const ContractAnalysisUpload = ({ goToNextStep }) => {
-  // const [files, setFiles] = useState([])
-
-  // const handleFileChange = (event) => {
-  //   const selectedFiles = Array.from(event.target.files)
-  //   const updatedFiles = [...files, ...selectedFiles].slice(0, TOTAL_IMAGE_COUNT)
-  //   setFiles(updatedFiles)
-  // }
-
   const { items } = useUploadedImages()
+  const { updateOCR, updateTranslation, updateSummary } = useDocumentAnalysisContext()
+
+  const handleAnalysis = () => {
+    updateOCR('page1', OCR_DUMMY_DATA_PAGE1)
+    updateOCR('page2', OCR_DUMMY_DATA_PAGE2)
+    updateOCR('page3', OCR_DUMMY_DATA_PAGE3)
+    updateTranslation('page1', TRANSLATION_DUMMY_DATA_PAGE1)
+    updateTranslation('page2', TRANSLATION_DUMMY_DATA_PAGE2)
+    updateTranslation('page3', TRANSLATION_DUMMY_DATA_PAGE3)
+    updateSummary(SUMMARY_DUMMY_DATA)
+    goToNextStep()
+  }
 
   return (
     <>
@@ -50,7 +64,7 @@ export const ContractAnalysisUpload = ({ goToNextStep }) => {
           size='lg'
           label='분석하기'
           disabled={items.length !== TOTAL_IMAGE_COUNT}
-          onClick={goToNextStep}
+          onClick={handleAnalysis}
         />
       </div>
     </>
