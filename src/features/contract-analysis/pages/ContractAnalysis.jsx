@@ -1,10 +1,10 @@
 import { BackButton } from '@/components/BackButton/BackButton'
 import { useStep } from '@/stores/useStep'
 
-import { ContractAnalysisMain } from '../main/pages/ContractAnalysisMain'
-import { ContractAnalysisResult } from '../result/pages/ContractAnalysisResult'
+import { ContractAnalysisMain } from '../pages/ContractAnalysisMain'
+import { ContractAnalysisResult } from '../pages/ContractAnalysisResult'
+import { ContractAnalysisUpload } from '../pages/ContractAnalysisUpload'
 import { UploadedImagesProvider } from '../stores/UploadedImagesProvider'
-import { ContractAnalysisUpload } from '../upload/pages/ContractAnalysisUpload'
 
 import styles from './ContractAnalysis.module.css'
 
@@ -18,7 +18,6 @@ export const ContractAnalysis = () => {
           <BackButton onClick={goToPrevStep} />
         </nav>
 
-        {/* <ContractAnalysisResult goToNextStep={goToNextStep} /> */}
         {currentStep === 1 && <ContractAnalysisMain goToNextStep={goToNextStep} />}
         {currentStep === 2 && <ContractAnalysisUpload goToNextStep={goToNextStep} />}
         {currentStep === 3 && <ContractAnalysisResult goToNextStep={goToNextStep} />}

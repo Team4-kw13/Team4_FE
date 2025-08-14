@@ -1,4 +1,4 @@
-import { useUploadedImages } from '../../upload/hooks/useUploadedImages'
+import { useUploadedImages } from '../hooks/useUploadedImages'
 
 import styles from './ContractAnalysisImageSlide.module.css'
 
