@@ -29,6 +29,10 @@ export const ContractAnalysisHighlight = () => {
         <h2>중요한 부분부터 확인해볼까요?</h2>
       </header>
 
+      <p className={styles['description']}>
+        노란색은 중요한 내용, 빨간색은 한 번 더 주의할 부분이에요.
+      </p>
+
       <section ref={carouselRef} className={styles['analysis-section']}>
         <ContractAnalysisImageSlide slideRefs={slideRefs} />
         <ContractAnalysisDownloadButton onDownload={downloadAll} />

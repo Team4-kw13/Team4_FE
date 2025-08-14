@@ -18,6 +18,9 @@
   z-index: 10;
 }
 
-.underline {
-  background: linear-gradient(to top, rgba(255, 161, 0, 0.7) 8px, transparent 0);
+.description {
+  margin: 12px 36px;
+  font-size: var(--font-list-detail-size);
+  font-weight: var(--font-list-detail-weight);
+  color: var(--color-sub-text);
 }
