@@ -8,19 +8,12 @@ import { useUploadedImages } from '../hooks/useUploadedImages'
 import styles from './ImageUploadButton.module.css'
 
 /**
- * @typedef {Object} ImageUploadButtonProps
- * @property {number} currentFileCount 현재 업로드된 파일 개수
- * @property {(e: React.ChangeEvent<HTMLInputElement>) => void} onChange 파일 선택 시 실행되는 콜백 함수
- */
-
-/**
  * 이미지 업로드 버튼 컴포넌트
  *
- * @param {ImageUploadButtonProps} props
  * @returns {JSX.Element}
  */
 
-export const ImageUploadButton = ({ currentFileCount, onChange }) => {
+export const ImageUploadButton = () => {
   const fileInputRef = useRef(null)
   const { items, handleInputChange } = useUploadedImages()
 
