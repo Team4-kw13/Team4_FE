@@ -29,7 +29,9 @@ export const ContractAnalysisTranslate = () => {
   return (
     <div>
       <header className={styles['header']}>
-        <h2>한집말이가 번역을 했어요!</h2>
+        <h2>
+          한집말이가 <span className={styles['underline']}>번역</span>을 했어요!
+        </h2>
         <h2>같이 꼼꼼하게 확인해볼까요?</h2>
       </header>
 
