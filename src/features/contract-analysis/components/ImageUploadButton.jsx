@@ -2,7 +2,7 @@ import { useRef } from 'react'
 
 import { Icon } from '@/components/Icon/Icon'
 
-import { TOTAL_IMAGE_COUNT } from '../constants/constants'
+import { TOTAL_IMAGE_COUNT } from '../constants/imageCount'
 import { useUploadedImages } from '../hooks/useUploadedImages'
 
 import styles from './ImageUploadButton.module.css'

@@ -1,7 +1,7 @@
 import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
 
 import { ImageUploadButton } from '../components/ImageUploadButton'
-import { TOTAL_IMAGE_COUNT } from '../constants/constants'
+import { TOTAL_IMAGE_COUNT } from '../constants/imageCount'
 import { useUploadedImages } from '../hooks/useUploadedImages'
 
 import styles from './ContractAnalysisUpload.module.css'

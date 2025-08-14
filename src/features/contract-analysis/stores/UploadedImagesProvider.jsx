@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
 
-import { TOTAL_IMAGE_COUNT } from '../upload/constants/constants'
+import { TOTAL_IMAGE_COUNT } from '../constants/imageCount'
 
 /**
  * @typedef {Object} UploadedImageItem
