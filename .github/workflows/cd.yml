@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          filter: ''
           persist-credentials: false
 
       - name: Clear default auth header (safety)
@@ -31,7 +32,6 @@ jobs:
 
       - name: Create export branch without workflows
         run: |
-          git fetch origin main --depth=1
           git checkout -B export-for-personal origin/main
           git rm -r --cached .github || true
           git commit -m "chore: exclude .github for personal mirror" || true
