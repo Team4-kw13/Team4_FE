@@ -1,5 +1,7 @@
 import { useRef } from 'react'
+import cx from 'classnames'
 
+import { ScrollToTopButton } from '@/components/ScrollToTopButton/ScrollToTopButton'
 import { useStep } from '@/stores/useStep'
 
 import { ContractAnalysisHighlight } from '../containers/ContractAnalysisHighlight'
@@ -8,12 +10,6 @@ import { ContractAnalysisTranslate } from '../containers/ContractAnalysisTransla
 import { useScrollSnap } from '../hooks/useScrollSnap'
 
 import styles from './ContractAnalysisResult.module.css'
-
-const RESULT_SECTIONS = [
-  { label: '번역 섹션', components: <ContractAnalysisTranslate /> },
-  { label: '하이라이트 섹션', components: <ContractAnalysisHighlight /> },
-  { label: '요약 섹션', components: <ContractAnalysisSummary /> },
-]
 
 export const ContractAnalysisResult = () => {
   const carouselRef = useRef(null)
@@ -27,17 +23,36 @@ export const ContractAnalysisResult = () => {
     <>
       <div className={styles['background']} />
       <div ref={carouselRef} className={styles['carousel-container']}>
-        {RESULT_SECTIONS.map(({ label, components }, index) => (
-          <section
-            key={label}
-            ref={slideRefs[index]}
-            className={styles['snap-item']}
-            data-index={index + 1}
-            aria-label={label}
-          >
-            {components}
-          </section>
-        ))}
+        <section
+          ref={slideRefs[0]}
+          className={cx(styles['carousel-item'], styles['snap-item'])}
+          data-index={1}
+          aria-label={'번역 섹션'}
+        >
+          <ContractAnalysisTranslate />
+        </section>
+
+        <section
+          ref={slideRefs[1]}
+          className={cx(styles['carousel-item'], styles['snap-item'])}
+          data-index={2}
+          aria-label={'하이라이트 섹션'}
+        >
+          <ContractAnalysisHighlight />
+        </section>
+
+        <section
+          ref={slideRefs[2]}
+          className={styles['carousel-item']}
+          data-index={3}
+          aria-label={'요약 섹션'}
+        >
+          <ContractAnalysisSummary containerRef={carouselRef} />
+
+          <div className={styles['scroll-button']}>
+            <ScrollToTopButton targetRef={carouselRef} />
+          </div>
+        </section>
       </div>
     </>
   )

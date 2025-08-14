@@ -9,17 +9,22 @@
 
 .carousel-container {
   position: relative;
-  margin-top: 16px;
-  height: calc(100svh - 98.5px);
+  height: calc(100svh - 82.5px);
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
 }
 
-.snap-item {
-  box-shadow: inset 1px 1px 20px red;
-  height: calc(100svh - 98.5px);
+.carousel-item {
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
+}
+
+.snap-item {
+  height: calc(100svh - 82.5px);
+}
+
+.scroll-button {
+  margin: 14px 16px 60px auto;
 }

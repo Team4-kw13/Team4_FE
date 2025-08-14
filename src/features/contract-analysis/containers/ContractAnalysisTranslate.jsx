@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 
 import { StepProgress } from '@/components/StepProgress/StepProgress'
+import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
 import { useHtml2CanvasBatch } from '@/hooks/useHtml2CanvasBatch'
 import { useStep } from '@/stores/useStep'
 
@@ -30,7 +31,7 @@ export const ContractAnalysisTranslate = () => {
     <div>
       <header className={styles['header']}>
         <h2>
-          한집말이가 <span className={styles['underline']}>번역</span>을 했어요!
+          한집말이가 <UnderlineText>번역</UnderlineText>을 했어요!
         </h2>
         <h2>같이 꼼꼼하게 확인해볼까요?</h2>
       </header>
