@@ -1,22 +1,34 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
+import { ContractAnalysisImageSlideHighlight } from '@/components/contract-image-slide/ContractImageSlideHighlight'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
+import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
 import { useHtml2CanvasBatch } from '@/hooks/useHtml2CanvasBatch'
+import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
 import { useStep } from '@/stores/useStep'
 
 import { ContractAnalysisDownloadButton } from '../components/ContractAnalysisDownloadButton'
-import { ContractAnalysisImageSlide } from '../components/ContractAnalysisImageSlide'
 import { ContractAnalysisTooltip } from '../components/ContractAnalysisTooltip'
+import { HIGHLIGHT_DUMMY_DATA } from '../constants/dummy'
 import { useScrollSnap } from '../hooks/useScrollSnap'
+import { useUploadedImagesContext } from '../stores/useUploadedImagesContext'
 
 import styles from './ContractAnalysisHighlight.module.css'
 
 export const ContractAnalysisHighlight = () => {
   const carouselRef = useRef(null)
+  const { items } = useUploadedImagesContext()
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
   const { currentStep, setStep } = useStep()
   const { downloadAll } = useHtml2CanvasBatch({ refs: slideRefs })
+  const {
+    actions: { setHighlightedTextByPage },
+  } = useDocumentAnalysisContext()
+
+  useEffect(() => {
+    setHighlightedTextByPage({ ...HIGHLIGHT_DUMMY_DATA })
+  }, [setHighlightedTextByPage])
 
   useScrollSnap(carouselRef, slideRefs, setStep)
 
@@ -24,17 +36,17 @@ export const ContractAnalysisHighlight = () => {
     <div>
       <header className={styles['header']}>
         <h2>
-          <span className={styles['underline']}>키워드</span>를 표시했어요!
+          <UnderlineText>키워드</UnderlineText>를 표시했어요!
         </h2>
         <h2>중요한 부분부터 확인해볼까요?</h2>
       </header>
 
       <p className={styles['description']}>
-        노란색은 중요한 내용, 빨간색은 한 번 더 주의할 부분이에요.
+        노란색은 중요한 내용, 파란색은 한 번 더 주의할 부분이에요.
       </p>
 
       <section ref={carouselRef} className={styles['analysis-section']}>
-        <ContractAnalysisImageSlide slideRefs={slideRefs} />
+        <ContractAnalysisImageSlideHighlight images={items} slideRefs={slideRefs} />
         <ContractAnalysisDownloadButton onDownload={downloadAll} />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>

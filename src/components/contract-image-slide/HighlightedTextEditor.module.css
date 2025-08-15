@@ -1,0 +1,19 @@
+.container {
+  display: inline;
+}
+
+.segment {
+  outline: none;
+}
+
+.readonly {
+  cursor: default;
+}
+
+.bg-warn {
+  background: #b0d6ff;
+}
+
+.bg-important {
+  background: #f8d97c;
+}

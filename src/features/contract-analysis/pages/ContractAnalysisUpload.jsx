@@ -1,33 +1,47 @@
 import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
+import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
 
 import { ImageUploadButton } from '../components/ImageUploadButton'
+import {
+  OCR_DUMMY_DATA_PAGE1,
+  OCR_DUMMY_DATA_PAGE2,
+  OCR_DUMMY_DATA_PAGE3,
+  TRANSLATION_DUMMY_DATA,
+} from '../constants/dummy'
 import { TOTAL_IMAGE_COUNT } from '../constants/imageCount'
 import { useUploadedImages } from '../hooks/useUploadedImages'
 
 import styles from './ContractAnalysisUpload.module.css'
 
 /**
- * @typedef {Object} ContractAnalysisMainProps
- * @property {() => void} goToNextStep "분석하기" 버튼 클릭 시 실행할 콜백 함수
+ * @typedef {Object} ContractAnalysisUploadProps
+ * @property {() => void} goToNextStep "분석하기" 버튼 클릭 시 다음 단계로 이동하는 콜백
  */
 
 /**
  * 계약서 업로드 화면 컴포넌트
  *
- * @param {ContractAnalysisMainProps} props
+ * - 사용자가 계약서 이미지를 업로드하는 단계
+ * - 업로드된 이미지 개수가 `TOTAL_IMAGE_COUNT`(3장)일 때만 "분석하기" 버튼 활성화
+ *
+ * @param {ContractAnalysisUploadProps} props
  * @returns {JSX.Element}
  */
 
 export const ContractAnalysisUpload = ({ goToNextStep }) => {
-  // const [files, setFiles] = useState([])
-
-  // const handleFileChange = (event) => {
-  //   const selectedFiles = Array.from(event.target.files)
-  //   const updatedFiles = [...files, ...selectedFiles].slice(0, TOTAL_IMAGE_COUNT)
-  //   setFiles(updatedFiles)
-  // }
-
   const { items } = useUploadedImages()
+  const {
+    actions: { setOcrPage, setTranslationByPage },
+  } = useDocumentAnalysisContext()
+
+  const handleAnalysis = () => {
+    setOcrPage('page1', OCR_DUMMY_DATA_PAGE1)
+    setOcrPage('page2', OCR_DUMMY_DATA_PAGE2)
+    setOcrPage('page3', OCR_DUMMY_DATA_PAGE3)
+
+    setTranslationByPage({ ...TRANSLATION_DUMMY_DATA })
+    goToNextStep()
+  }
 
   return (
     <>
@@ -50,7 +64,7 @@ export const ContractAnalysisUpload = ({ goToNextStep }) => {
           size='lg'
           label='분석하기'
           disabled={items.length !== TOTAL_IMAGE_COUNT}
-          onClick={goToNextStep}
+          onClick={handleAnalysis}
         />
       </div>
     </>
