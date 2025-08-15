@@ -4,4 +4,5 @@ export const ROUTES = Object.freeze({
   MYPAGE: '/mypage',
   LIST_SITE: '/list-site',
   LIST_LAWYER: '/list-lawyer',
+  HOMEPAGE: '/home',
 })
