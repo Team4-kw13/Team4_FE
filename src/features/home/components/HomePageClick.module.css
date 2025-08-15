@@ -1,0 +1,116 @@
+.container {
+  width: 100%;
+  height: 456.332px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  box-sizing: border-box;
+  z-index: 1;
+
+  /* 요소 크기 */
+  --bubble-top: 38px; /* 배경 상단 ↔ 말풍선 상단 */
+  --bubble-h: 57.914px;
+  --hero-w: 157px;
+  --hero-h: 162px;
+  --oval-w: 118px;
+  --oval-h: 33px;
+  --cta-h: 24px;
+
+  /* 간격 */
+  --gap-bubble-hero: 48.09px; /* 말풍선 ↔ heroBtn */
+  --gap-hero-oval: 36px; /* heroBtn ↔ oval */
+  --gap-oval-cta: 24px; /* oval ↔ CLICK! */
+
+  /* 위치 계산 */
+  --hero-top: calc(var(--bubble-top) + var(--bubble-h) + var(--gap-bubble-hero));
+  --oval-top: calc(var(--hero-top) + var(--hero-h) + var(--gap-hero-oval));
+  --cta-top: calc(var(--oval-top) + var(--oval-h) + var(--gap-oval-cta));
+}
+
+.bubble {
+  position: absolute;
+  top: var(--bubble-top);
+  left: 50%;
+  transform: translateX(-50%);
+  height: var(--bubble-h);
+  border-radius: 32px;
+  font-size: 20px;
+  font-weight: 700;
+  background: #fff;
+  padding: 17px 17px 17.91px 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+  width: auto;
+  min-width: 270px;
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -8px;
+  border-width: 8px 8px 0 8px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* heroBtn */
+.heroBtn {
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: var(--hero-top);
+  width: var(--hero-w);
+  height: var(--hero-h);
+  display: grid;
+  place-items: center;
+}
+
+.heroBtn::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 172px;
+  height: 172px;
+  flex-shrink: 0;
+  background: #ffa100;
+  border-radius: 50%;
+  filter: blur(75px);
+  z-index: -1;
+}
+
+/* oval */
+.oval {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: var(--oval-top);
+  width: var(--oval-w);
+  height: var(--oval-h);
+  background: rgba(171, 128, 0, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* CLICK! */
+.cta {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: var(--cta-top);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: #1a1a1a;
+  line-height: var(--cta-h);
+  height: var(--cta-h);
+  text-align: center;
+}
