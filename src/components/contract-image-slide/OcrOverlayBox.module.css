@@ -1,0 +1,15 @@
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: white;
+  border-radius: 2px;
+  font-size: 4px;
+  color: #000;
+  cursor: text;
+  box-shadow: 0 0 1px 1px #eeebeb;
+}
+.active {
+  outline: 2px solid #b0d6ff;
+}

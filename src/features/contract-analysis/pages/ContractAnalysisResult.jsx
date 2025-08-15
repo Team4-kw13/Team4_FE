@@ -8,15 +8,12 @@ import { ContractAnalysisHighlight } from '../containers/ContractAnalysisHighlig
 import { ContractAnalysisSummary } from '../containers/ContractAnalysisSummary'
 import { ContractAnalysisTranslate } from '../containers/ContractAnalysisTranslate'
 import { useScrollSnap } from '../hooks/useScrollSnap'
-import { useDocumentAnalysisContext } from '../stores/useDocumentAnalysisContext'
 
 import styles from './ContractAnalysisResult.module.css'
 
 export const ContractAnalysisResult = () => {
   const carouselRef = useRef(null)
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
-  const { ocr, translation, summary } = useDocumentAnalysisContext()
-  console.log(ocr, translation, summary)
 
   const { setStep } = useStep()
 

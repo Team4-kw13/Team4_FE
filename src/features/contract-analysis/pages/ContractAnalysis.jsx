@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 
 import { BackButton } from '@/components/BackButton/BackButton'
 import { DocumentAnalysisProvider } from '@/stores/DocumentAnalysisProvider'
-import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
 import { useStep } from '@/stores/useStep'
 
 import { ContractAnalysisMain } from '../pages/ContractAnalysisMain'
@@ -27,14 +26,10 @@ import styles from './ContractAnalysis.module.css'
 
 export const ContractAnalysis = () => {
   const { currentStep, goToNextStep, goToPrevStep, reset: resetStep } = useStep(3)
-  const {
-    actions: { reset: resetContext },
-  } = useDocumentAnalysisContext()
 
   useEffect(() => {
     resetStep()
-    resetContext()
-  }, [resetContext, resetStep])
+  }, [resetStep])
 
   return (
     <DocumentAnalysisProvider>
