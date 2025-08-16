@@ -1,13 +1,13 @@
 .app {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
+  max-width: 450px;
+  height: 100svh;
+  margin: 0 auto;
+  outline: 1px solid lightgrey;
+  overflow: hidden;
 }
 
 .container {
-  max-width: 450px;
   width: 100%;
-  height: 100svh;
-  outline: 1px solid lightgrey;
-  overflow: hidden;
+  height: 100%;
+  overflow: scroll;
 }
