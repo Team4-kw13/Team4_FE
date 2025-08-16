@@ -7,6 +7,14 @@
 @import './shadow.css';
 
 @font-face {
+  font-family: 'saehayan';
+  src: url('/fonts/Saehayan.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'freesentation';
   src: url('/fonts/Freesentation-Bold.ttf') format('truetype');
   font-weight: 700;
