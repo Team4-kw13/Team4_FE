@@ -7,7 +7,7 @@ import styles from './HomePageAnalysis.module.css'
 
 export const HomePageAnalysis = () => {
   return (
-    <Link to={ROUTES.ANALYSIS_HISTORY} className={styles.card}>
+    <Link to={ROUTES.LIST_CONTRACT} className={styles.card}>
       <Icon name='folder' width={45} height={41} />
       <div className={styles.texts}>
         <p className={styles.desc}>전에 분석한 계약서를 다시 확인해요</p>
