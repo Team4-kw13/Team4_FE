@@ -17,7 +17,7 @@
   font-size: 24px;
   font-weight: 700;
   color: #1a1a1a;
-  font-family: 'Ownglyph Saehayan';
+  font-family: var(--font-family-saehayan);
 }
 
 .right {

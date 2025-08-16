@@ -24,7 +24,8 @@ export const AnalysisHistoryTranslate = () => {
     <div>
       <header className={styles['header']}>
         <h2>
-          한집말이가 <UnderlineText>번역</UnderlineText>을 했어요!
+          <span className={styles['logo']}>한집말이</span> 가 <UnderlineText>번역</UnderlineText>을
+          했어요!
         </h2>
         <h2>같이 꼼꼼하게 확인해볼까요?</h2>
       </header>
