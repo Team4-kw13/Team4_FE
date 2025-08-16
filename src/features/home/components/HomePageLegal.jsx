@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 
 import { Icon } from '@/components/Icon/Icon'
+import { ROUTES } from '@/router/routes.constant'
 
 import styles from './HomePageLegal.module.css'
 
 export const HomePageLegal = () => {
   return (
-    <Link to='/list-site' className={styles.card}>
+    <Link to={ROUTES.LIST_SITE} className={styles.card}>
       <Icon name='chat' width={45} height={41} />
       <div className={styles.texts}>
         <p className={styles.desc}>
