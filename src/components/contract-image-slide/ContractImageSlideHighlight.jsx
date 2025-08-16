@@ -1,9 +1,3 @@
-/**
- * @typedef {Object} ContractAnalysisImageSlideProps
- * @property {{ id:string, previewUrl:string }[]} images 업로드된 이미지 목록
- * @property {import('react').RefObject<HTMLDivElement>[]} slideRefs 슬라이드 컨테이너 refs
- */
-
 import { Fragment, useState } from 'react'
 
 import { useImageNaturals } from '@/hooks/useImageNaturals'
@@ -16,6 +10,13 @@ import { OcrOverlayBox } from './OcrOverlayBox'
 import styles from './ContractAnalysisImageSlide.module.css'
 
 /**
+ * @typedef {Object} ContractAnalysisImageSlideProps
+ * @property {{ id:string, previewUrl:string }[]} images 업로드된 이미지 목록
+ * @property {import('react').RefObject<HTMLDivElement>[]} slideRefs 슬라이드 컨테이너 refs
+ * @property {boolean} [readOnly=false] 읽기 전용 여부
+ */
+
+/**
  * 계약서 번역 이미지 슬라이드 (하이라이트 모드)
  *
  * - 좌우 스크롤 캐러셀
@@ -26,7 +27,7 @@ import styles from './ContractAnalysisImageSlide.module.css'
  * @returns {JSX.Element}
  */
 
-export const ContractAnalysisImageSlideHighlight = ({ images, slideRefs }) => {
+export const ContractAnalysisImageSlideHighlight = ({ images, slideRefs, readOnly = false }) => {
   const [activeFieldId, setActiveFieldId] = useState(null)
   const { imageRefs, naturalSizes, handleImageLoad } = useImageNaturals()
 
@@ -74,6 +75,7 @@ export const ContractAnalysisImageSlideHighlight = ({ images, slideRefs }) => {
                     >
                       <HighlightedTextEditor
                         text={text}
+                        readOnly={readOnly}
                         onChange={(nextMarkedText) =>
                           updateHighlightedTextAndSync(pageKey, ocrIndex, nextMarkedText)
                         }

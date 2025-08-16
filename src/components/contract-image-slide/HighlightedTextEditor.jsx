@@ -12,7 +12,7 @@ import styles from './HighlightedTextEditor.module.css'
  * @typedef {Object} HighlightedTextEditorProps
  * @property {string} text [[w]]..[[/]] 마커 포함 원본 문자열
  * @property {(nextMarkedText: string) => void} [onChange] 블러 시 직렬화된 문자열 콜백
- * @property {string} [className] 추가 클래스명
+ * @property {boolean} [readOnly=false] 읽기 전용 여부
  * @property {import('react').HTMLAttributes<HTMLSpanElement>} [rest] span에 전달할 DOM 속성
  */
 
