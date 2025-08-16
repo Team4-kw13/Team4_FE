@@ -16,7 +16,7 @@ export const HomePageLegal = () => {
           전문 상담과 연결해요
         </p>
         <div className={styles.action}>
-          <span>법률 상담</span>
+          <span className={styles['button-name']}>법률 상담</span>
           <Icon name='select' width={20} height={20} />
         </div>
       </div>

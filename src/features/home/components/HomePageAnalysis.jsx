@@ -12,7 +12,7 @@ export const HomePageAnalysis = () => {
       <div className={styles.texts}>
         <p className={styles.desc}>전에 분석한 계약서를 다시 확인해요</p>
         <div className={styles.action}>
-          <span>분석 조회</span>
+          <span className={styles['button-name']}>분석 조회</span>
           <Icon name='select' width={20} height={20} />
         </div>
       </div>

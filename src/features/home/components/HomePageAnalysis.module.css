@@ -1,7 +1,4 @@
 .card {
-  flex: 0 0 auto;
-  width: 157px;
-  height: 160px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -10,7 +7,6 @@
   gap: 8px 28px;
   align-content: center;
   flex-wrap: wrap;
-  flex-grow: 1;
 }
 
 .texts {
@@ -20,6 +16,7 @@
 }
 
 .desc {
+  flex-grow: 1;
   color: #545454;
   font-size: 16px;
   line-height: 1.1;
@@ -32,4 +29,8 @@
   font-size: 20px;
   font-weight: 700;
   color: #1a1a1a;
+}
+
+.button-name {
+  flex-shrink: 0;
 }
