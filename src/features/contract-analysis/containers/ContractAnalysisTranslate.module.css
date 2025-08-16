@@ -4,6 +4,11 @@
   font-weight: var(--font-common-title-weight);
 }
 
+.logo {
+  font-family: var(--font-family-saehayan);
+  vertical-align: middle;
+}
+
 .analysis-section {
   position: relative;
   margin: 0 36px;

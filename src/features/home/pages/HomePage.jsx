@@ -8,9 +8,10 @@ import styles from './HomePage.module.css'
 export const HomePage = () => {
   return (
     <div className={styles['container']}>
-      <HomePageHeader />
-
-      <HomePageClick />
+      <section className={styles['bg-container']}>
+        <HomePageHeader />
+        <HomePageClick />
+      </section>
 
       <div className={styles.cardsRow}>
         <HomePageAnalysis />

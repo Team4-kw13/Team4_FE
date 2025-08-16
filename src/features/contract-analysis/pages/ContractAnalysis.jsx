@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { BackButton } from '@/components/BackButton/BackButton'
 import { DocumentAnalysisProvider } from '@/stores/DocumentAnalysisProvider'
@@ -25,18 +26,24 @@ import styles from './ContractAnalysis.module.css'
  */
 
 export const ContractAnalysis = () => {
+  const navigate = useNavigate()
   const { currentStep, goToNextStep, goToPrevStep, reset: resetStep } = useStep(3)
 
   useEffect(() => {
     resetStep()
   }, [resetStep])
 
+  const handleClickBackButton = () => {
+    if (currentStep === 1) navigate(-1)
+    else goToPrevStep()
+  }
+
   return (
     <DocumentAnalysisProvider>
       <UploadedImagesProvider>
         <div className={styles['container']}>
           <nav className={styles['back-button']}>
-            <BackButton onClick={goToPrevStep} />
+            <BackButton onClick={handleClickBackButton} />
           </nav>
 
           {currentStep === 1 && <ContractAnalysisMain goToNextStep={goToNextStep} />}

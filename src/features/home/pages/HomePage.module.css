@@ -8,21 +8,22 @@
   background-color: var(--color-list-mypage-bg);
 }
 
-.container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 557px;
+.bg-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+  position: relative;
   background: var(--sub-bg, #ffe69d);
   border-radius: 0 0 32px 32px;
+  overflow: hidden;
   z-index: 0;
 }
 
 .cardsRow {
   margin: 24px 25px 71px 24px;
-  display: flex;
-  gap: 12px;
   align-self: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }

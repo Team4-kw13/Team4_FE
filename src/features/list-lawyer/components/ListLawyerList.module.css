@@ -1,4 +1,6 @@
 .list {
+  flex-grow: 1;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   max-height: 850px;

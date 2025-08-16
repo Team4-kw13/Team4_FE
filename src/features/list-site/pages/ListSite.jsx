@@ -15,11 +15,11 @@ export const ListSite = () => {
       </nav>
       <ListSiteHeader />
 
-      <ListSiteAdviceList />
-
-      <ListSiteLawyerHeader />
-
-      <ListSiteLawyerList />
+      <section className={styles['scroll-section']}>
+        <ListSiteAdviceList />
+        <ListSiteLawyerHeader />
+        <ListSiteLawyerList />
+      </section>
     </div>
   )
 }

@@ -1,6 +1,6 @@
-.list {
+.container {
   display: flex;
   flex-direction: column;
-  max-height: 850px;
+  margin: 0 36px 20px;
   overflow-y: auto;
 }
