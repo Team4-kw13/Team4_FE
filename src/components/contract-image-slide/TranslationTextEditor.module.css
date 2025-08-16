@@ -1,0 +1,7 @@
+.container {
+  outline: none;
+}
+
+.readonly {
+  cursor: default;
+}

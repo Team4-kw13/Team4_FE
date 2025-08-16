@@ -5,4 +5,5 @@ export const ROUTES = Object.freeze({
   LIST_SITE: '/list-site',
   LIST_LAWYER: '/list-lawyer',
   LIST_CONTRACT: '/list-contract',
+  HOMEPAGE: '/home',
 })
