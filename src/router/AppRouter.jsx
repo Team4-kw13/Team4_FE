@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
+import { AnalysisHistory } from '../features/analysis-history/pages/AnalysisHistory'
 import { ContractAnalysis } from '../features/contract-analysis/pages/ContractAnalysis'
 import { ListLawyer } from '../features/list-lawyer/pages/ListLawyer'
 import { ListSite } from '../features/list-site/pages/ListSite'
@@ -13,6 +14,7 @@ const routes = [
   { path: ROUTES.MYPAGE, element: <MyPage /> },
   { path: ROUTES.LIST_SITE, element: <ListSite /> },
   { path: ROUTES.LIST_LAWYER, element: <ListLawyer /> },
+  { path: ROUTES.ANALYSIS_HISTORY, element: <AnalysisHistory /> },
 ]
 
 export const AppRouter = () => {
