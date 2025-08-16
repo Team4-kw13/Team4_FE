@@ -13,6 +13,7 @@ import styles from './ContractAnalysisImageSlide.module.css'
  * @typedef {Object} ContractAnalysisImageSlideTranslationProps
  * @property {{ id:string, previewUrl:string }[]} images 업로드된 이미지 목록
  * @property {import('react').RefObject<HTMLDivElement>[]} slideRefs 슬라이드 컨테이너 refs
+ * @property {boolean} [readOnly=false] 읽기 전용 여부
  */
 
 /**
@@ -26,7 +27,7 @@ import styles from './ContractAnalysisImageSlide.module.css'
  * @returns {JSX.Element}
  */
 
-export const ContractAnalysisImageSlideTranslation = ({ images, slideRefs }) => {
+export const ContractAnalysisImageSlideTranslation = ({ images, slideRefs, readOnly = false }) => {
   const [activeFieldId, setActiveFieldId] = useState(null)
   const { imageRefs, naturalSizes, handleImageLoad } = useImageNaturals()
 
@@ -74,6 +75,7 @@ export const ContractAnalysisImageSlideTranslation = ({ images, slideRefs }) => 
                     >
                       <TranslationTextEditor
                         text={text}
+                        readOnly={readOnly}
                         onChange={(nextPlainText) =>
                           updateTranslationText(pageKey, ocrIndex, nextPlainText)
                         }
