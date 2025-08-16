@@ -25,7 +25,7 @@ const routes = [
   { path: ROUTES.MYPAGE, element: <MyPage /> },
   { path: ROUTES.LIST_SITE, element: <ListSite /> },
   { path: ROUTES.LIST_LAWYER, element: <ListLawyer /> },
-  { path: ROUTES.ANALYSIS_HISTORY, element: <AnalysisHistory /> },
+  { path: ROUTES.ANALYSIS_HISTORY(), element: <AnalysisHistory /> },
   { path: ROUTES.LIST_CONTRACT, element: <ListContract /> },
   { path: ROUTES.HOMEPAGE, element: <HomePage /> },
 ]
