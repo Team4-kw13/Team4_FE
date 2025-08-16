@@ -8,3 +8,9 @@
 .back-button {
   margin: 48px 16px 24px;
 }
+
+.scroll-section {
+  height: 100%;
+  overflow: scroll;
+  margin-bottom: 20px;
+}
