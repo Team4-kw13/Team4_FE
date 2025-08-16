@@ -1,0 +1,25 @@
+.container {
+  margin-top: 16px;
+}
+
+.important-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.warning-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 36px;
+  font-size: var(--font-common-title-size);
+  font-weight: var(--font-common-title-weight);
+}
