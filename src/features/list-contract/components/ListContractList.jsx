@@ -18,11 +18,36 @@ const dummy = [
     title: '주택임대차표준계약서',
     description: '2025.08.18',
   },
+  {
+    id: 4,
+    title: '주택임대차표준계약서',
+    description: '2025.08.18',
+  },
+  {
+    id: 5,
+    title: '주택임대차표준계약서',
+    description: '2025.08.18',
+  },
+  {
+    id: 6,
+    title: '주택임대차표준계약서',
+    description: '2025.08.18',
+  },
+  {
+    id: 7,
+    title: '주택임대차표준계약서',
+    description: '2025.08.18',
+  },
+  {
+    id: 8,
+    title: '주택임대차표준계약서',
+    description: '2025.08.18',
+  },
 ]
 
 export const ListContractList = () => {
   return (
-    <div className={styles.list}>
+    <div className={styles['container']}>
       {dummy.map((contract) => (
         <ListLawyerItem
           key={contract.id}

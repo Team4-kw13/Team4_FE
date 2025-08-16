@@ -15,9 +15,7 @@ export default function ListContractItem({ contractId, title, description, onCli
         <p className={styles.description}>{description}</p>
       </div>
 
-      <button className={styles.iconButton} onClick={onClick} aria-label='상담하기'>
-        <Icon name='caret' width={18} height={18} />
-      </button>
+      <Icon name='caret' width={18} height={18} />
     </Link>
   )
 }

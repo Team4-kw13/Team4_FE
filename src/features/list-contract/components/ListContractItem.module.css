@@ -3,10 +3,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 36px;
   height: 85px;
   border-bottom: 1px solid #b9b9b9;
   flex-shrink: 0;
+  padding-right: 14px;
 }
 
 .textContainer {
@@ -45,13 +45,4 @@
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.iconButton {
-  background: none;
-  border: none;
-  color: var(--color-sub-text);
-  font-size: 20px;
-  cursor: pointer;
-  margin-right: 8px;
 }
