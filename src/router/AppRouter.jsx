@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 
 import { ContractAnalysis } from '../features/contract-analysis/pages/ContractAnalysis'
+import { ListContract } from '../features/list-contract/pages/ListContract'
 import { HomePage } from '../features/home/pages/HomePage'
 import { ListLawyer } from '../features/list-lawyer/pages/ListLawyer'
 import { ListSite } from '../features/list-site/pages/ListSite'
@@ -14,6 +15,7 @@ const routes = [
   { path: ROUTES.MYPAGE, element: <MyPage /> },
   { path: ROUTES.LIST_SITE, element: <ListSite /> },
   { path: ROUTES.LIST_LAWYER, element: <ListLawyer /> },
+  { path: ROUTES.LIST_CONTRACT, element: <ListContract /> },
   { path: ROUTES.HOMEPAGE, element: <HomePage /> },
 ]
 
