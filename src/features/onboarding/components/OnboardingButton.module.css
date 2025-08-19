@@ -1,0 +1,19 @@
+.button {
+  display: flex;
+  width: 285px;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 19px 45px;
+  border-radius: 32px;
+  background: #ffc107;
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+  line-height: normal;
+  margin: 52px 45px 60px;
+}
+.button:active {
+  transform: translateY(1px);
+}
