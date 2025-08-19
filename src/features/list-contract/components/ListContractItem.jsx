@@ -5,7 +5,7 @@ import { ROUTES } from '@/router/routes.constant'
 
 import styles from './ListContractItem.module.css'
 
-export default function ListContractItem({ contractId, title, description, onClick }) {
+export default function ListContractItem({ contractId, title, description }) {
   return (
     <Link to={ROUTES.ANALYSIS_HISTORY(contractId)} className={styles.container}>
       <div className={styles.textContainer}>
