@@ -1,0 +1,27 @@
+.subtitle {
+  padding-top: 19.7svh;
+  padding-bottom: 10svh;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 36px;
+  text-align: center;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.circle {
+  position: absolute;
+  width: 218px;
+  height: 218px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 206, 59, 0.7);
+  border-radius: 100%;
+  box-shadow: 0 4px 20px 5px #fff inset;
+  z-index: -1;
+}
