@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { BackButton } from '@/components/BackButton/BackButton'
+import { BackButton } from '@/components/back-button/BackButton'
 import { ContractAnalysisResult } from '@/features/contract-analysis-result/pages/ContractAnalysisResult'
 import { UploadedImagesProvider } from '@/stores/UploadedImagesProvider'
 import { useStep } from '@/stores/useStep'

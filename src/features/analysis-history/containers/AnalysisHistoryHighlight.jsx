@@ -2,8 +2,8 @@ import { useRef } from 'react'
 
 import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
 import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
-import { StepProgress } from '@/components/StepProgress/StepProgress'
-import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
+import { StepProgress } from '@/components/step-progress/StepProgress'
+import { UnderlineText } from '@/components/underline-text/UnderlineText'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useStep } from '@/stores/useStep'
 

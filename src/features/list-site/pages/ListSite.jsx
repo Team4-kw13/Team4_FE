@@ -1,4 +1,4 @@
-import { BackButton } from '@/components/BackButton/BackButton'
+import { BackButton } from '@/components/back-button/BackButton'
 
 import { ListSiteAdviceList } from '../components/ListSiteAdviceList'
 import { ListSiteHeader } from '../components/ListSiteHeader'

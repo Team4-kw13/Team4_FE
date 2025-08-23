@@ -1,4 +1,4 @@
-import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
+import { PrimaryButton } from '@/components/primary-button/PrimaryButton'
 import { TOTAL_IMAGE_COUNT } from '@/constants/imageCount'
 import { useUploadedImages } from '@/hooks/useUploadedImages'
 

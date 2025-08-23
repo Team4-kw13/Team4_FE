@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
+import { PrimaryButton } from '@/components/primary-button/PrimaryButton'
 import { ROUTES } from '@/router/routes.constant'
 
 import { useSaveAnalysisData } from '../services/useSaveAnalysisData'

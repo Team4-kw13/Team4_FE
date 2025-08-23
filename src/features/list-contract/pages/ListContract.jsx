@@ -1,4 +1,4 @@
-import { BackButton } from '@/components/BackButton/BackButton'
+import { BackButton } from '@/components/back-button/BackButton'
 import { ListContractHeader } from '@/features/list-contract/components/ListContractHeader'
 import { ListContractList } from '@/features/list-contract/components/ListContractList'
 
