@@ -6,5 +6,5 @@ export const contractAnalysisSteps = [
     title: '쉬운 풀이+번역으로 이해하면',
     description: '계약서 속 어려운 법률 조항과 조건을\r\n알기 쉬운 설명과 본인 언어로 안내해드려요',
   },
-  { title: '끝' },
+  { title: '끝!' },
 ]
