@@ -1,14 +1,13 @@
 import { useState } from 'react'
 
 import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
+import { TOTAL_IMAGE_COUNT } from '@/constants/imageCount'
+import { ContractAnalysisLoading } from '@/features/contract-analysis-result/components/ContractAnalysisLoading'
+import { useTranslation } from '@/features/contract-analysis-result/hooks/useTranslation'
+import { useUploadedImages } from '@/hooks/useUploadedImages'
 
 import { ImageUploadButton } from '../components/ImageUploadButton'
-import { TOTAL_IMAGE_COUNT } from '../constants/imageCount'
 import { useOcrAnalysis } from '../hooks/useOcrAnalysis'
-import { useTranslation } from '../hooks/useTranslation'
-import { useUploadedImages } from '../hooks/useUploadedImages'
-
-import { ContractAnalysisLoading } from './ContractAnalysisLoading'
 
 import styles from './ContractAnalysisUpload.module.css'
 

@@ -1,17 +1,16 @@
 import { useEffect, useRef } from 'react'
 
+import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
+import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
 import { ContractAnalysisImageSlideHighlight } from '@/components/contract-image-slide/ContractImageSlideHighlight'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
+import { HIGHLIGHT_DUMMY_DATA } from '@/constants/dummy'
 import { useHtml2CanvasBatch } from '@/hooks/useHtml2CanvasBatch'
+import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
 import { useStep } from '@/stores/useStep'
-
-import { ContractAnalysisDownloadButton } from '../components/ContractAnalysisDownloadButton'
-import { ContractAnalysisTooltip } from '../components/ContractAnalysisTooltip'
-import { HIGHLIGHT_DUMMY_DATA } from '../constants/dummy'
-import { useScrollSnap } from '../hooks/useScrollSnap'
-import { useUploadedImagesContext } from '../stores/useUploadedImagesContext'
+import { useUploadedImagesContext } from '@/stores/useUploadedImagesContext'
 
 import styles from './ContractAnalysisHighlight.module.css'
 

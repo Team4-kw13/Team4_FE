@@ -3,17 +3,16 @@ import cx from 'classnames'
 
 import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
 import { ScrollToTopButton } from '@/components/ScrollToTopButton/ScrollToTopButton'
+import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
 import { useStep } from '@/stores/useStep'
 
+import { ContractAnalysisLoading } from '../components/ContractAnalysisLoading'
 import { ContractAnalysisHighlight } from '../containers/ContractAnalysisHighlight'
 import { ContractAnalysisSummary } from '../containers/ContractAnalysisSummary'
 import { ContractAnalysisTranslate } from '../containers/ContractAnalysisTranslate'
 import { useHighlight } from '../hooks/useHighlight'
-import { useScrollSnap } from '../hooks/useScrollSnap'
 import { useSummary } from '../hooks/useSummary'
-
-import { ContractAnalysisLoading } from './ContractAnalysisLoading'
 
 import styles from './ContractAnalysisResult.module.css'
 

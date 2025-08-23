@@ -3,7 +3,7 @@ import cx from 'classnames'
 
 import { BackButton } from '@/components/BackButton/BackButton'
 import { ScrollToTopButton } from '@/components/ScrollToTopButton/ScrollToTopButton'
-import { useScrollSnap } from '@/features/contract-analysis/hooks/useScrollSnap'
+import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { DocumentAnalysisProvider } from '@/stores/DocumentAnalysisProvider'
 import { useStep } from '@/stores/useStep'
 

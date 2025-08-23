@@ -1,12 +1,12 @@
 import { useRef } from 'react'
 
+import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
+import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
 import { ContractAnalysisImageSlideTranslation } from '@/components/contract-image-slide/ContractImageSlideTranslation'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
-import { ContractAnalysisDownloadButton } from '@/features/contract-analysis/components/ContractAnalysisDownloadButton'
-import { ContractAnalysisTooltip } from '@/features/contract-analysis/components/ContractAnalysisTooltip'
-import { useScrollSnap } from '@/features/contract-analysis/hooks/useScrollSnap'
 import { useHtml2CanvasBatch } from '@/hooks/useHtml2CanvasBatch'
+import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useStep } from '@/stores/useStep'
 
 import styles from './AnalysisHistoryTranslate.module.css'
