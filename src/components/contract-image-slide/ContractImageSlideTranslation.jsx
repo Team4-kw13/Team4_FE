@@ -33,8 +33,13 @@ export const ContractAnalysisImageSlideTranslation = ({ images, slideRefs, readO
 
   const {
     state: { ocrByPage, translationByPage },
-    actions: { updateTranslationText },
+    actions: { updateTranslationText, handleEditTranslate },
   } = useDocumentAnalysisContext()
+
+  const handleEdit = (pageKey, ocrIndex, nextPlainText) => {
+    updateTranslationText(pageKey, ocrIndex, nextPlainText)
+    handleEditTranslate()
+  }
 
   return (
     <div className={styles['container']}>
@@ -76,9 +81,7 @@ export const ContractAnalysisImageSlideTranslation = ({ images, slideRefs, readO
                       <TranslationTextEditor
                         text={text}
                         readOnly={readOnly}
-                        onChange={(nextPlainText) =>
-                          updateTranslationText(pageKey, ocrIndex, nextPlainText)
-                        }
+                        onChange={(nextPlainText) => handleEdit(pageKey, ocrIndex, nextPlainText)}
                       />
                     </OcrOverlayBox>
                   )
