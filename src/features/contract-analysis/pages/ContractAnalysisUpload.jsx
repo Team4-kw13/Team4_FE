@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
 
 import { ImageUploadButton } from '../components/ImageUploadButton'
@@ -5,6 +7,8 @@ import { TOTAL_IMAGE_COUNT } from '../constants/imageCount'
 import { useOcrAnalysis } from '../hooks/useOcrAnalysis'
 import { useTranslation } from '../hooks/useTranslation'
 import { useUploadedImages } from '../hooks/useUploadedImages'
+
+import { ContractAnalysisLoading } from './ContractAnalysisLoading'
 
 import styles from './ContractAnalysisUpload.module.css'
 
@@ -24,19 +28,24 @@ import styles from './ContractAnalysisUpload.module.css'
  */
 
 export const ContractAnalysisUpload = ({ goToNextStep }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const { items } = useUploadedImages()
   const { fetchOcrData } = useOcrAnalysis()
   const { fetchTranslationData } = useTranslation()
 
   const handleClickButton = async () => {
     try {
+      setIsLoading(true)
       const ocrData = await fetchOcrData()
       await fetchTranslationData(ocrData)
+      setIsLoading(false)
       goToNextStep()
     } catch (e) {
       console.log(e)
     }
   }
+
+  if (isLoading) return <ContractAnalysisLoading />
 
   return (
     <>

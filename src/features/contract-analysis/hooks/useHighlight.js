@@ -1,9 +1,12 @@
+import { useState } from 'react'
+
 import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
 
 import { PROMPT_HIGHLIGHT } from '../constants/prompt'
 import { requestOpenAI } from '../services/gpt'
 
 export const useHighlight = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const {
     actions: { setHighlightedTextByPage, handleAfterFetch },
   } = useDocumentAnalysisContext()
@@ -23,7 +26,9 @@ export const useHighlight = () => {
       return [pageKey, response[pageKey]]
     })
 
+    setIsLoading(true)
     const settled = await Promise.all(pagePromises)
+    setIsLoading(false)
     const merged = settled.reduce((acc, [k, arr]) => ({ ...acc, [k]: arr }), {
       page1: [],
       page2: [],
@@ -33,5 +38,5 @@ export const useHighlight = () => {
     handleAfterFetch('page2')
   }
 
-  return { fetchHighlightData }
+  return { isLoading, fetchHighlightData }
 }

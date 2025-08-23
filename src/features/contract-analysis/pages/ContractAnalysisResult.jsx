@@ -13,13 +13,15 @@ import { useHighlight } from '../hooks/useHighlight'
 import { useScrollSnap } from '../hooks/useScrollSnap'
 import { useSummary } from '../hooks/useSummary'
 
+import { ContractAnalysisLoading } from './ContractAnalysisLoading'
+
 import styles from './ContractAnalysisResult.module.css'
 
 export const ContractAnalysisResult = () => {
   const carouselRef = useRef(null)
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
-  const { fetchHighlightData } = useHighlight()
-  const { fetchSummaryData } = useSummary()
+  const { isLoading: isHighlightLoading, fetchHighlightData } = useHighlight()
+  const { isLoading: isSummaryLoading, fetchSummaryData } = useSummary()
   const {
     state: { translationByPage, highlightedTextByPage, summary, isNeedFetch },
   } = useDocumentAnalysisContext()
@@ -36,6 +38,8 @@ export const ContractAnalysisResult = () => {
       fetchSummaryData(translationByPage)
     }
   }, [currentStep, isNeedFetch, translationByPage, fetchHighlightData, fetchSummaryData])
+
+  if (isHighlightLoading || isSummaryLoading) return <ContractAnalysisLoading />
 
   return (
     <>
@@ -56,7 +60,8 @@ export const ContractAnalysisResult = () => {
           data-index={2}
           aria-label={'하이라이트 섹션'}
         >
-          {highlightedTextByPage && <ContractAnalysisHighlight />}
+          {highlightedTextByPage &&
+            (isHighlightLoading ? <ContractAnalysisLoading /> : <ContractAnalysisHighlight />)}
         </section>
 
         <section
@@ -65,7 +70,12 @@ export const ContractAnalysisResult = () => {
           data-index={3}
           aria-label={'요약 섹션'}
         >
-          {summary && <ContractAnalysisSummary containerRef={carouselRef} />}
+          {summary &&
+            (isSummaryLoading ? (
+              <ContractAnalysisLoading />
+            ) : (
+              <ContractAnalysisSummary containerRef={carouselRef} />
+            ))}
 
           <div className={styles['scroll-button']}>
             <ScrollToTopButton targetRef={carouselRef} />
