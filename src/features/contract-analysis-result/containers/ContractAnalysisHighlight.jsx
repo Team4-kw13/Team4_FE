@@ -41,7 +41,10 @@ export const ContractAnalysisHighlight = () => {
 
       <section ref={carouselRef} className={styles['analysis-section']}>
         <ContractAnalysisImageSlideHighlight images={items} slideRefs={slideRefs} />
-        <ContractAnalysisDownloadButton refs={slideRefs} />
+        <ContractAnalysisDownloadButton
+          refs={slideRefs}
+          getFileName={(i) => `하이라이트 ${i + 1}.png`}
+        />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>
           <StepProgress currentStep={currentStep} />

@@ -2,11 +2,12 @@ import { useRef } from 'react'
 
 import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
 import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
-import { ContractAnalysisImageSlideTranslation } from '@/components/contract-image-slide/ContractImageSlideTranslation'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useStep } from '@/stores/useStep'
+
+import { TranslationHistoryImageSlide } from '../components/TranslationHistoryImageSlide'
 
 import styles from './AnalysisHistoryTranslate.module.css'
 
@@ -29,7 +30,7 @@ export const AnalysisHistoryTranslate = () => {
       </header>
 
       <section ref={carouselRef} className={styles['analysis-section']}>
-        <ContractAnalysisImageSlideTranslation slideRefs={slideRefs} readOnly />
+        <TranslationHistoryImageSlide slideRefs={slideRefs} />
         <ContractAnalysisDownloadButton refs={slideRefs} />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>

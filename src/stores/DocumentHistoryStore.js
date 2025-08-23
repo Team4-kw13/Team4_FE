@@ -2,10 +2,10 @@ import { create } from 'zustand'
 
 const initialState = {
   images: [],
-  ocr: {},
+  vertices: {},
   translation: {},
   highlight: {},
-  summary: null,
+  summary: {},
 }
 
 export const useDocumentHistoryStore = create((set) => ({
@@ -15,13 +15,13 @@ export const useDocumentHistoryStore = create((set) => ({
     /**
      * 서버 스냅샷을 한 번에 저장
      */
-    setFromServerSnapshot: (payload) => set({ ...payload }),
+    setHistoryData: (payload) => set({ ...payload }),
     reset: () => set({ ...initialState }),
   },
 }))
 
-export const useDocumentHistoryImages = () => useDocumentHistoryStore((state) => state.image)
-export const useDocumentHistoryOcr = () => useDocumentHistoryStore((state) => state.ocr)
+export const useDocumentHistoryImages = () => useDocumentHistoryStore((state) => state.images)
+export const useDocumentHistoryVertices = () => useDocumentHistoryStore((state) => state.vertices)
 export const useDocumentHistoryTranslation = () =>
   useDocumentHistoryStore((state) => state.translation)
 export const useDocumentHistoryHighlight = () => useDocumentHistoryStore((state) => state.highlight)

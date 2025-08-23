@@ -11,7 +11,7 @@ export const AnalysisSummarySection = ({ items }) => {
 
   return (
     <div className={styles['container']}>
-      {items.summary.map(({ title, subTitle, content }) => (
+      {items.map(({ title, subTitle, content }) => (
         <div key={title} className={styles['item']}>
           <h4 className={styles['item-title']}>{title}</h4>
           <h5 className={styles['item-subtitle']}>{subTitle}</h5>
