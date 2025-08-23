@@ -1,5 +1,3 @@
-import { useSummary } from '@/stores/DocumentAnalysisStore'
-
 import styles from './AnalysisSummarySection.module.css'
 
 /**
@@ -8,14 +6,12 @@ import styles from './AnalysisSummarySection.module.css'
  * @returns {JSX.Element}
  */
 
-export const AnalysisSummarySection = () => {
-  const summary = useSummary()
-
-  if (!summary?.summary) return null
+export const AnalysisSummarySection = ({ items }) => {
+  if (!items) return null
 
   return (
     <div className={styles['container']}>
-      {summary.summary.map(({ title, subTitle, content }) => (
+      {items.summary.map(({ title, subTitle, content }) => (
         <div key={title} className={styles['item']}>
           <h4 className={styles['item-title']}>{title}</h4>
           <h5 className={styles['item-subtitle']}>{subTitle}</h5>

@@ -29,7 +29,7 @@ export const AnalysisHistoryTranslate = () => {
       </header>
 
       <section ref={carouselRef} className={styles['analysis-section']}>
-        <ContractAnalysisImageSlideTranslation images={[]} slideRefs={slideRefs} readOnly />
+        <ContractAnalysisImageSlideTranslation slideRefs={slideRefs} readOnly />
         <ContractAnalysisDownloadButton refs={slideRefs} />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>

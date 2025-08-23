@@ -1,6 +1,7 @@
 import { AnalysisSummarySection } from '@/components/analysis-summary-section/AnalysisSummarySection'
 import { Icon } from '@/components/Icon/Icon'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
+import { useSummary } from '@/stores/DocumentAnalysisStore'
 
 import { ContractAnalysisLoading } from '../components/ContractAnalysisLoading'
 import { useFetchSummaryData } from '../hooks/useFetchSummaryData'
@@ -9,8 +10,10 @@ import styles from './ContractAnalysisSummary.module.css'
 
 export const ContractAnalysisSummary = () => {
   const { isLoading } = useFetchSummaryData()
+  const summary = useSummary()
 
   if (isLoading) return <ContractAnalysisLoading />
+  if (!summary) return null
 
   return (
     <div className={styles['container']}>
@@ -25,7 +28,7 @@ export const ContractAnalysisSummary = () => {
           </div>
         </header>
 
-        <AnalysisSummarySection />
+        <AnalysisSummarySection items={summary.summary} />
       </section>
 
       <section className={styles['warning-section']}>
@@ -39,7 +42,7 @@ export const ContractAnalysisSummary = () => {
           </div>
         </header>
 
-        <AnalysisSummarySection />
+        <AnalysisSummarySection items={summary.warning} />
       </section>
     </div>
   )
