@@ -1,12 +1,11 @@
 import { useRef } from 'react'
 
+import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
+import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
 import { ContractAnalysisImageSlideHighlight } from '@/components/contract-image-slide/ContractImageSlideHighlight'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
-import { ContractAnalysisDownloadButton } from '@/features/contract-analysis/components/ContractAnalysisDownloadButton'
-import { ContractAnalysisTooltip } from '@/features/contract-analysis/components/ContractAnalysisTooltip'
-import { useScrollSnap } from '@/features/contract-analysis/hooks/useScrollSnap'
-import { useHtml2CanvasBatch } from '@/hooks/useHtml2CanvasBatch'
+import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useStep } from '@/stores/useStep'
 
 import styles from './AnalysisHistoryHighlight.module.css'
@@ -16,7 +15,6 @@ export const AnalysisHistoryHighlight = () => {
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
   const { currentStep, setStep } = useStep()
-  const { downloadAll } = useHtml2CanvasBatch({ refs: slideRefs })
 
   useScrollSnap(carouselRef, slideRefs, setStep)
 
@@ -35,7 +33,7 @@ export const AnalysisHistoryHighlight = () => {
 
       <section ref={carouselRef} className={styles['analysis-section']}>
         <ContractAnalysisImageSlideHighlight images={[]} slideRefs={slideRefs} />
-        <ContractAnalysisDownloadButton onDownload={downloadAll} />
+        <ContractAnalysisDownloadButton refs={slideRefs} />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>
           <StepProgress currentStep={currentStep} />

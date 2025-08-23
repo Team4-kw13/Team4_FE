@@ -3,12 +3,12 @@ import cx from 'classnames'
 
 import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
 import { ScrollToTopButton } from '@/components/ScrollToTopButton/ScrollToTopButton'
-import { useStep } from '@/stores/useStep'
+import { useScrollSnap } from '@/hooks/useScrollSnap'
+import { useAnalysisResultStepActions } from '@/stores/AnalysisResultStep'
 
 import { ContractAnalysisHighlight } from '../containers/ContractAnalysisHighlight'
 import { ContractAnalysisSummary } from '../containers/ContractAnalysisSummary'
 import { ContractAnalysisTranslate } from '../containers/ContractAnalysisTranslate'
-import { useScrollSnap } from '../hooks/useScrollSnap'
 
 import styles from './ContractAnalysisResult.module.css'
 
@@ -16,7 +16,7 @@ export const ContractAnalysisResult = () => {
   const carouselRef = useRef(null)
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
-  const { setStep } = useStep()
+  const { setStep } = useAnalysisResultStepActions()
 
   useScrollSnap(carouselRef, slideRefs, setStep)
 
@@ -44,7 +44,7 @@ export const ContractAnalysisResult = () => {
 
         <section
           ref={slideRefs[2]}
-          className={styles['carousel-item']}
+          className={cx(styles['carousel-item'], styles['snap-last-item'])}
           data-index={3}
           aria-label={'요약 섹션'}
         >

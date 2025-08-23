@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { BackButton } from '@/components/BackButton/BackButton'
+import { ContractAnalysisResult } from '@/features/contract-analysis-result/pages/ContractAnalysisResult'
 import { DocumentAnalysisProvider } from '@/stores/DocumentAnalysisProvider'
+import { UploadedImagesProvider } from '@/stores/UploadedImagesProvider'
 import { useStep } from '@/stores/useStep'
 
 import { ContractAnalysisMain } from '../pages/ContractAnalysisMain'
-import { ContractAnalysisResult } from '../pages/ContractAnalysisResult'
 import { ContractAnalysisUpload } from '../pages/ContractAnalysisUpload'
-import { UploadedImagesProvider } from '../stores/UploadedImagesProvider'
 
 import styles from './ContractAnalysis.module.css'
 

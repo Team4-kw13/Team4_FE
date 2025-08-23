@@ -1,17 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
+import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
+import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
 import { ContractAnalysisImageSlideHighlight } from '@/components/contract-image-slide/ContractImageSlideHighlight'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
-import { useHtml2CanvasBatch } from '@/hooks/useHtml2CanvasBatch'
-import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
+import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useStep } from '@/stores/useStep'
+import { useUploadedImagesContext } from '@/stores/useUploadedImagesContext'
 
-import { ContractAnalysisDownloadButton } from '../components/ContractAnalysisDownloadButton'
-import { ContractAnalysisTooltip } from '../components/ContractAnalysisTooltip'
-import { HIGHLIGHT_DUMMY_DATA } from '../constants/dummy'
-import { useScrollSnap } from '../hooks/useScrollSnap'
-import { useUploadedImagesContext } from '../stores/useUploadedImagesContext'
+import { ContractAnalysisLoading } from '../components/ContractAnalysisLoading'
+import { useFetchHighlightData } from '../hooks/useFetchHighlightData'
 
 import styles from './ContractAnalysisHighlight.module.css'
 
@@ -21,16 +20,11 @@ export const ContractAnalysisHighlight = () => {
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
   const { currentStep, setStep } = useStep()
-  const { downloadAll } = useHtml2CanvasBatch({ refs: slideRefs })
-  const {
-    actions: { setHighlightedTextByPage },
-  } = useDocumentAnalysisContext()
-
-  useEffect(() => {
-    setHighlightedTextByPage({ ...HIGHLIGHT_DUMMY_DATA })
-  }, [setHighlightedTextByPage])
+  const { isLoading } = useFetchHighlightData()
 
   useScrollSnap(carouselRef, slideRefs, setStep)
+
+  if (isLoading) return <ContractAnalysisLoading />
 
   return (
     <div>
@@ -47,7 +41,7 @@ export const ContractAnalysisHighlight = () => {
 
       <section ref={carouselRef} className={styles['analysis-section']}>
         <ContractAnalysisImageSlideHighlight images={items} slideRefs={slideRefs} />
-        <ContractAnalysisDownloadButton onDownload={downloadAll} />
+        <ContractAnalysisDownloadButton refs={slideRefs} />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>
           <StepProgress currentStep={currentStep} />

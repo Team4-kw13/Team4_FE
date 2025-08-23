@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { useUploadedImagesContext } from '../stores/useUploadedImagesContext'
+import { useUploadedImagesContext } from '@/stores/useUploadedImagesContext'
 
 /**
  * 업로드 이미지 전역 상태를 쓰기 위한 훅

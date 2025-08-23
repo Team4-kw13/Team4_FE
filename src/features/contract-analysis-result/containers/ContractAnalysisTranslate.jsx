@@ -1,15 +1,16 @@
 import { useRef } from 'react'
 
+import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
+import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
-import { useHtml2CanvasBatch } from '@/hooks/useHtml2CanvasBatch'
+import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useStep } from '@/stores/useStep'
+import { useUploadedImagesContext } from '@/stores/useUploadedImagesContext'
 
 import { ContractAnalysisImageSlideTranslation } from '../../../components/contract-image-slide/ContractImageSlideTranslation'
-import { ContractAnalysisDownloadButton } from '../components/ContractAnalysisDownloadButton'
-import { ContractAnalysisTooltip } from '../components/ContractAnalysisTooltip'
-import { useScrollSnap } from '../hooks/useScrollSnap'
-import { useUploadedImagesContext } from '../stores/useUploadedImagesContext'
+import { ContractAnalysisLoading } from '../components/ContractAnalysisLoading'
+import { useFetchOcrTranslationData } from '../hooks/useFetchOcrTranslationData'
 
 import styles from './ContractAnalysisTranslate.module.css'
 
@@ -21,13 +22,14 @@ import styles from './ContractAnalysisTranslate.module.css'
 
 export const ContractAnalysisTranslate = () => {
   const carouselRef = useRef(null)
-  const { items } = useUploadedImagesContext()
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
-
+  const { items } = useUploadedImagesContext()
+  const { isLoading } = useFetchOcrTranslationData()
   const { currentStep, setStep } = useStep()
-  const { downloadAll } = useHtml2CanvasBatch({ refs: slideRefs })
 
   useScrollSnap(carouselRef, slideRefs, setStep)
+
+  if (isLoading) return <ContractAnalysisLoading />
 
   return (
     <div>
@@ -41,7 +43,7 @@ export const ContractAnalysisTranslate = () => {
 
       <section ref={carouselRef} className={styles['analysis-section']}>
         <ContractAnalysisImageSlideTranslation images={items} slideRefs={slideRefs} />
-        <ContractAnalysisDownloadButton onDownload={downloadAll} />
+        <ContractAnalysisDownloadButton refs={slideRefs} />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>
           <StepProgress currentStep={currentStep} />
