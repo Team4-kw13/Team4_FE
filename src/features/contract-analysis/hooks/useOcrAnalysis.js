@@ -51,6 +51,8 @@ export const useOcrAnalysis = () => {
     setOcrPage('page1', ocrData['page1'])
     setOcrPage('page2', ocrData['page2'])
     setOcrPage('page3', ocrData['page3'])
+
+    return ocrData
   }
 
   return { fetchOcrData }

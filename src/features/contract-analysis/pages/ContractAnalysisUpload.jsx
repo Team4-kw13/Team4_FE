@@ -1,14 +1,9 @@
 import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
-import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
 
 import { ImageUploadButton } from '../components/ImageUploadButton'
-import {
-  OCR_DUMMY_DATA_PAGE1,
-  OCR_DUMMY_DATA_PAGE2,
-  OCR_DUMMY_DATA_PAGE3,
-  TRANSLATION_DUMMY_DATA,
-} from '../constants/dummy'
 import { TOTAL_IMAGE_COUNT } from '../constants/imageCount'
+import { useOcrAnalysis } from '../hooks/useOcrAnalysis'
+import { useTranslation } from '../hooks/useTranslation'
 import { useUploadedImages } from '../hooks/useUploadedImages'
 
 import styles from './ContractAnalysisUpload.module.css'
@@ -30,17 +25,17 @@ import styles from './ContractAnalysisUpload.module.css'
 
 export const ContractAnalysisUpload = ({ goToNextStep }) => {
   const { items } = useUploadedImages()
-  const {
-    actions: { setOcrPage, setTranslationByPage },
-  } = useDocumentAnalysisContext()
+  const { fetchOcrData } = useOcrAnalysis()
+  const { fetchTranslationData } = useTranslation()
 
-  const handleAnalysis = () => {
-    setOcrPage('page1', OCR_DUMMY_DATA_PAGE1)
-    setOcrPage('page2', OCR_DUMMY_DATA_PAGE2)
-    setOcrPage('page3', OCR_DUMMY_DATA_PAGE3)
-
-    setTranslationByPage({ ...TRANSLATION_DUMMY_DATA })
-    goToNextStep()
+  const handleClickButton = async () => {
+    try {
+      const ocrData = await fetchOcrData()
+      await fetchTranslationData(ocrData)
+      goToNextStep()
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (
@@ -64,7 +59,7 @@ export const ContractAnalysisUpload = ({ goToNextStep }) => {
           size='lg'
           label='분석하기'
           disabled={items.length !== TOTAL_IMAGE_COUNT}
-          onClick={handleAnalysis}
+          onClick={handleClickButton}
         />
       </div>
     </>

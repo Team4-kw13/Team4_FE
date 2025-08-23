@@ -33,8 +33,13 @@ export const ContractAnalysisImageSlideHighlight = ({ images, slideRefs, readOnl
 
   const {
     state: { ocrByPage, highlightedTextByPage },
-    actions: { updateHighlightedTextAndSync },
+    actions: { updateHighlightedTextAndSync, handleEditHighlight },
   } = useDocumentAnalysisContext()
+
+  const handleEdit = (pageKey, ocrIndex, nextPlainText) => {
+    updateHighlightedTextAndSync(pageKey, ocrIndex, nextPlainText)
+    handleEditHighlight()
+  }
 
   return (
     <div className={styles['container']}>
@@ -76,9 +81,7 @@ export const ContractAnalysisImageSlideHighlight = ({ images, slideRefs, readOnl
                       <HighlightedTextEditor
                         text={text}
                         readOnly={readOnly}
-                        onChange={(nextMarkedText) =>
-                          updateHighlightedTextAndSync(pageKey, ocrIndex, nextMarkedText)
-                        }
+                        onChange={(nextMarkedText) => handleEdit(pageKey, ocrIndex, nextMarkedText)}
                       />
                     </OcrOverlayBox>
                   )

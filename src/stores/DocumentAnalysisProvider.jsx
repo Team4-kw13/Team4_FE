@@ -50,6 +50,7 @@ export const DocumentAnalysisProvider = ({ children }) => {
   const [translationByPage, setTranslationByPage] = useState({})
   const [highlightedTextByPage, setHighlightedTextByPage] = useState({})
   const [summary, setSummary] = useState(null)
+  const [isNeedFetch, setIsNeedFetch] = useState({ page2: true, page3: true })
 
   /** 특정 페이지의 OCR 결과 저장 */
   const setOcrPage = useCallback((pageKey, blocks) => {
@@ -111,9 +112,24 @@ export const DocumentAnalysisProvider = ({ children }) => {
     setSummary(null)
   }, [])
 
+  /** 번역본에서 수정된 경우, 하이라이팅과 요약 refetch 필요 */
+  const handleEditTranslate = useCallback(() => {
+    setIsNeedFetch({ page2: true, page3: true })
+  }, [])
+
+  /** 하이라이팅에서 수정된 경우, 요약 refetch 필요 */
+  const handleEditHighlight = useCallback(() => {
+    setIsNeedFetch({ page2: false, page3: true })
+  }, [])
+
+  /** Open AI 데이터 요청 이후 */
+  const handleAfterFetch = useCallback((page) => {
+    setIsNeedFetch((prev) => ({ ...prev, [page]: false }))
+  }, [])
+
   const value = useMemo(
     () => ({
-      state: { ocrByPage, translationByPage, highlightedTextByPage, summary },
+      state: { ocrByPage, translationByPage, highlightedTextByPage, summary, isNeedFetch },
       actions: {
         setOcrPage,
         setTranslationByPage,
@@ -121,6 +137,9 @@ export const DocumentAnalysisProvider = ({ children }) => {
         setHighlightedTextByPage,
         updateHighlightedTextAndSync,
         saveSummary,
+        handleEditTranslate,
+        handleEditHighlight,
+        handleAfterFetch,
         reset,
       },
     }),
@@ -129,12 +148,16 @@ export const DocumentAnalysisProvider = ({ children }) => {
       translationByPage,
       highlightedTextByPage,
       summary,
+      isNeedFetch,
       setOcrPage,
       setTranslationByPage,
       updateTranslationText,
       setHighlightedTextByPage,
       updateHighlightedTextAndSync,
       saveSummary,
+      handleEditTranslate,
+      handleEditHighlight,
+      handleAfterFetch,
       reset,
     ],
   )
