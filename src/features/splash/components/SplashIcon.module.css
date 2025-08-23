@@ -1,0 +1,33 @@
+/* 전체 아이콘 감싸는 부모 */
+.wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 64px;
+  z-index: 1;
+}
+
+/* 개별 아이콘 wrapper */
+.iconWrapper {
+  position: absolute;
+  width: 261px;
+  height: 270px;
+  display: grid;
+  place-items: center;
+}
+
+/* 아이콘 이미지 */
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* icon2만 확대 */
+.iconWrapper:nth-child(2) .icon {
+  transform: scale(1.4);
+}
+
+.iconWrapper:nth-child(3) .icon {
+  transform: scale(1.2);
+}
