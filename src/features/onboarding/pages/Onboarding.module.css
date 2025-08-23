@@ -26,6 +26,12 @@
   grid-template-rows: 1fr;
 }
 
+:global(.slide:nth-child(2) img) {
+  width: 258px;
+  height: 208px;
+  object-fit: contain;
+}
+
 .bottom {
   display: grid;
   gap: 16px;
