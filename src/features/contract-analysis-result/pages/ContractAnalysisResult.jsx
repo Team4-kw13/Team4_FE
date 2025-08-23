@@ -1,12 +1,12 @@
 import { useRef } from 'react'
 import cx from 'classnames'
 
-import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
 import { ScrollToTopButton } from '@/components/ScrollToTopButton/ScrollToTopButton'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useAnalysisResultStepActions } from '@/stores/AnalysisResultStep'
 
 import { ContractAnalysisHighlight } from '../containers/ContractAnalysisHighlight'
+import { ContractAnalysisSaveButton } from '../containers/ContractAnalysisSaveButton'
 import { ContractAnalysisSummary } from '../containers/ContractAnalysisSummary'
 import { ContractAnalysisTranslate } from '../containers/ContractAnalysisTranslate'
 
@@ -54,12 +54,7 @@ export const ContractAnalysisResult = () => {
             <ScrollToTopButton targetRef={carouselRef} />
           </div>
 
-          <PrimaryButton
-            size='lg'
-            label='저장하기'
-            className={styles['save-button']}
-            onClick={() => {}}
-          />
+          <ContractAnalysisSaveButton />
         </section>
       </div>
     </>
