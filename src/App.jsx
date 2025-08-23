@@ -11,9 +11,9 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false)
-    }, 3000) // 3초
+    }, 3000)
 
-    return () => clearTimeout(timer) // 언마운트 시 클린업
+    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -25,6 +25,7 @@ function App() {
           <AppRouter />
         </div>
       )}
+      <Splash />
     </div>
   )
 }
