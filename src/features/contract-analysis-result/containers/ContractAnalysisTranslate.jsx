@@ -1,15 +1,17 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
 import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
-import { useHtml2CanvasBatch } from '@/hooks/useHtml2CanvasBatch'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useStep } from '@/stores/useStep'
 import { useUploadedImagesContext } from '@/stores/useUploadedImagesContext'
 
 import { ContractAnalysisImageSlideTranslation } from '../../../components/contract-image-slide/ContractImageSlideTranslation'
+import { ContractAnalysisLoading } from '../components/ContractAnalysisLoading'
+import { useOcrAnalysis } from '../hooks/useOcrAnalysis'
+import { useTranslation } from '../hooks/useTranslation'
 
 import styles from './ContractAnalysisTranslate.module.css'
 
@@ -25,9 +27,24 @@ export const ContractAnalysisTranslate = () => {
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
   const { currentStep, setStep } = useStep()
-  const { downloadAll } = useHtml2CanvasBatch({ refs: slideRefs })
 
   useScrollSnap(carouselRef, slideRefs, setStep)
+
+  const [isLoading, setIsLoading] = useState(false)
+  const { fetchOcrData } = useOcrAnalysis()
+  const { fetchTranslationData } = useTranslation()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const ocrData = await fetchOcrData()
+      await fetchTranslationData(ocrData)
+    }
+    setIsLoading(true)
+    fetchData()
+    setIsLoading(false)
+  }, [fetchOcrData, fetchTranslationData])
+
+  if (isLoading) return <ContractAnalysisLoading />
 
   return (
     <div>
@@ -41,7 +58,7 @@ export const ContractAnalysisTranslate = () => {
 
       <section ref={carouselRef} className={styles['analysis-section']}>
         <ContractAnalysisImageSlideTranslation images={items} slideRefs={slideRefs} />
-        <ContractAnalysisDownloadButton onDownload={downloadAll} />
+        <ContractAnalysisDownloadButton refs={slideRefs} />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>
           <StepProgress currentStep={currentStep} />

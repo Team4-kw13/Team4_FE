@@ -1,13 +1,8 @@
-import { useState } from 'react'
-
 import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
 import { TOTAL_IMAGE_COUNT } from '@/constants/imageCount'
-import { ContractAnalysisLoading } from '@/features/contract-analysis-result/components/ContractAnalysisLoading'
-import { useTranslation } from '@/features/contract-analysis-result/hooks/useTranslation'
 import { useUploadedImages } from '@/hooks/useUploadedImages'
 
 import { ImageUploadButton } from '../components/ImageUploadButton'
-import { useOcrAnalysis } from '../hooks/useOcrAnalysis'
 
 import styles from './ContractAnalysisUpload.module.css'
 
@@ -27,24 +22,7 @@ import styles from './ContractAnalysisUpload.module.css'
  */
 
 export const ContractAnalysisUpload = ({ goToNextStep }) => {
-  const [isLoading, setIsLoading] = useState(false)
   const { items } = useUploadedImages()
-  const { fetchOcrData } = useOcrAnalysis()
-  const { fetchTranslationData } = useTranslation()
-
-  const handleClickButton = async () => {
-    try {
-      setIsLoading(true)
-      const ocrData = await fetchOcrData()
-      await fetchTranslationData(ocrData)
-      setIsLoading(false)
-      goToNextStep()
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  if (isLoading) return <ContractAnalysisLoading />
 
   return (
     <>
@@ -67,7 +45,7 @@ export const ContractAnalysisUpload = ({ goToNextStep }) => {
           size='lg'
           label='분석하기'
           disabled={items.length !== TOTAL_IMAGE_COUNT}
-          onClick={handleClickButton}
+          onClick={goToNextStep}
         />
       </div>
     </>

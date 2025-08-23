@@ -6,7 +6,6 @@ import { ContractAnalysisImageSlideHighlight } from '@/components/contract-image
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
 import { HIGHLIGHT_DUMMY_DATA } from '@/constants/dummy'
-import { useHtml2CanvasBatch } from '@/hooks/useHtml2CanvasBatch'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
 import { useStep } from '@/stores/useStep'
@@ -20,7 +19,6 @@ export const ContractAnalysisHighlight = () => {
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
   const { currentStep, setStep } = useStep()
-  const { downloadAll } = useHtml2CanvasBatch({ refs: slideRefs })
   const {
     actions: { setHighlightedTextByPage },
   } = useDocumentAnalysisContext()
@@ -46,7 +44,7 @@ export const ContractAnalysisHighlight = () => {
 
       <section ref={carouselRef} className={styles['analysis-section']}>
         <ContractAnalysisImageSlideHighlight images={items} slideRefs={slideRefs} />
-        <ContractAnalysisDownloadButton onDownload={downloadAll} />
+        <ContractAnalysisDownloadButton refs={slideRefs} />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>
           <StepProgress currentStep={currentStep} />

@@ -5,7 +5,6 @@ import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractA
 import { ContractAnalysisImageSlideTranslation } from '@/components/contract-image-slide/ContractImageSlideTranslation'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
-import { useHtml2CanvasBatch } from '@/hooks/useHtml2CanvasBatch'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useStep } from '@/stores/useStep'
 
@@ -16,7 +15,6 @@ export const AnalysisHistoryTranslate = () => {
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
   const { currentStep, setStep } = useStep()
-  const { downloadAll } = useHtml2CanvasBatch({ refs: slideRefs })
 
   useScrollSnap(carouselRef, slideRefs, setStep)
 
@@ -32,7 +30,7 @@ export const AnalysisHistoryTranslate = () => {
 
       <section ref={carouselRef} className={styles['analysis-section']}>
         <ContractAnalysisImageSlideTranslation images={[]} slideRefs={slideRefs} readOnly />
-        <ContractAnalysisDownloadButton onDownload={downloadAll} />
+        <ContractAnalysisDownloadButton refs={slideRefs} />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>
           <StepProgress currentStep={currentStep} />
