@@ -17,6 +17,7 @@
   margin-top: 48px;
   font-size: var(--font-popup-detail-size);
   font-weight: var(--font-popup-detail-weight);
+  line-height: var(--font-popup-detail-line-height);
   text-align: center;
   white-space: pre-line;
 }

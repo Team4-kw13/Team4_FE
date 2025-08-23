@@ -25,6 +25,7 @@
   /** 팝업 세부내용, 안내문구 */
   --font-popup-detail-weight: 500;
   --font-popup-detail-size: 16px;
+  --font-popup-detail-line-height: 20px;
 
   /** 리스트 제목 */
   --font-list-title-weight: 700;
