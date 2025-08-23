@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 
 import { BackButton } from '@/components/BackButton/BackButton'
 import { ContractAnalysisResult } from '@/features/contract-analysis-result/pages/ContractAnalysisResult'
-import { DocumentAnalysisProvider } from '@/stores/DocumentAnalysisProvider'
 import { UploadedImagesProvider } from '@/stores/UploadedImagesProvider'
 import { useStep } from '@/stores/useStep'
 
@@ -39,18 +38,16 @@ export const ContractAnalysis = () => {
   }
 
   return (
-    <DocumentAnalysisProvider>
-      <UploadedImagesProvider>
-        <div className={styles['container']}>
-          <nav className={styles['back-button']}>
-            <BackButton onClick={handleClickBackButton} />
-          </nav>
+    <UploadedImagesProvider>
+      <div className={styles['container']}>
+        <nav className={styles['back-button']}>
+          <BackButton onClick={handleClickBackButton} />
+        </nav>
 
-          {currentStep === 1 && <ContractAnalysisMain goToNextStep={goToNextStep} />}
-          {currentStep === 2 && <ContractAnalysisUpload goToNextStep={goToNextStep} />}
-          {currentStep === 3 && <ContractAnalysisResult goToNextStep={goToNextStep} />}
-        </div>
-      </UploadedImagesProvider>
-    </DocumentAnalysisProvider>
+        {currentStep === 1 && <ContractAnalysisMain goToNextStep={goToNextStep} />}
+        {currentStep === 2 && <ContractAnalysisUpload goToNextStep={goToNextStep} />}
+        {currentStep === 3 && <ContractAnalysisResult goToNextStep={goToNextStep} />}
+      </div>
+    </UploadedImagesProvider>
   )
 }
