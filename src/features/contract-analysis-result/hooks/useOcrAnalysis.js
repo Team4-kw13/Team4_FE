@@ -1,7 +1,8 @@
+import { useCallback } from 'react'
+
 import { OCR_DUMMY } from '@/constants/dummy'
 import { useUploadedImages } from '@/hooks/useUploadedImages'
-import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
-
+import { useDocumentAnalysisActions } from '@/stores/DocumentAnalysisStore'
 /**
  * OCR 분석 훅
  *
@@ -10,31 +11,25 @@ import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
  *
  * @returns {{ fetchOcrData: () => Promise<void> }}
  */
+
 export const useOcrAnalysis = () => {
   const { items } = useUploadedImages()
-  const {
-    actions: { setOcrPage },
-  } = useDocumentAnalysisContext()
+  const { setOcrPage } = useDocumentAnalysisActions()
 
-  const imageList = [
-    { file: items[0]?.file, templateId: import.meta.env.VITE_CLOVA_TEMPLATE_ID1 },
-    { file: items[1]?.file, templateId: import.meta.env.VITE_CLOVA_TEMPLATE_ID2 },
-    { file: items[1]?.file, templateId: import.meta.env.VITE_CLOVA_TEMPLATE_ID3 },
-    { file: items[2]?.file, templateId: import.meta.env.VITE_CLOVA_TEMPLATE_ID4 },
-    { file: items[2]?.file, templateId: import.meta.env.VITE_CLOVA_TEMPLATE_ID5 },
-  ]
+  const fetchOcrData = useCallback(async () => {
+    if (!items?.length) throw new Error('업로드된 파일이 없습니다.')
 
-  const fetchOcrData = async () => {
-    if (!items?.length) {
-      throw new Error('업로드된 파일이 없습니다.')
-    }
+    // const imageList = [
+    //   { file: items[0]?.file, templateId: import.meta.env.VITE_CLOVA_TEMPLATE_ID1 },
+    //   { file: items[1]?.file, templateId: import.meta.env.VITE_CLOVA_TEMPLATE_ID2 },
+    //   { file: items[1]?.file, templateId: import.meta.env.VITE_CLOVA_TEMPLATE_ID3 },
+    //   { file: items[2]?.file, templateId: import.meta.env.VITE_CLOVA_TEMPLATE_ID4 },
+    //   { file: items[2]?.file, templateId: import.meta.env.VITE_CLOVA_TEMPLATE_ID5 },
+    // ]
 
     // const tasks = imageList.map(({ file, templateId }) => {
-    //   if (!(file instanceof File)) {
-    //     throw new Error(`파일 형식이 올바르지 않습니다.`)
-    //   }
-    //   const formData = createOcrFormData(file, templateId)
-    //   return requestOcr(formData)
+    //   if (!(file instanceof File)) throw new Error('파일 형식이 올바르지 않습니다.')
+    //   return requestOcr(createOcrFormData(file, templateId))
     // })
 
     // const results = await Promise.all(tasks)
@@ -46,12 +41,10 @@ export const useOcrAnalysis = () => {
     // }
     const ocrData = OCR_DUMMY
 
-    setOcrPage('page1', ocrData['page1'])
-    setOcrPage('page2', ocrData['page2'])
-    setOcrPage('page3', ocrData['page3'])
-
+    setOcrPage('page1', ocrData.page1)
+    setOcrPage('page2', ocrData.page2)
+    setOcrPage('page3', ocrData.page3)
     return ocrData
-  }
-
+  }, [items, setOcrPage])
   return { fetchOcrData }
 }

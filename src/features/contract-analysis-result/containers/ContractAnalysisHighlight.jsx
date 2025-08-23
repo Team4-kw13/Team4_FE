@@ -1,15 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
 import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
 import { ContractAnalysisImageSlideHighlight } from '@/components/contract-image-slide/ContractImageSlideHighlight'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
-import { HIGHLIGHT_DUMMY_DATA } from '@/constants/dummy'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
-import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
 import { useStep } from '@/stores/useStep'
 import { useUploadedImagesContext } from '@/stores/useUploadedImagesContext'
+
+import { ContractAnalysisLoading } from '../components/ContractAnalysisLoading'
+import { useFetchHighlightData } from '../hooks/useFetchHighlightData'
 
 import styles from './ContractAnalysisHighlight.module.css'
 
@@ -19,15 +20,11 @@ export const ContractAnalysisHighlight = () => {
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
   const { currentStep, setStep } = useStep()
-  const {
-    actions: { setHighlightedTextByPage },
-  } = useDocumentAnalysisContext()
-
-  useEffect(() => {
-    setHighlightedTextByPage({ ...HIGHLIGHT_DUMMY_DATA })
-  }, [setHighlightedTextByPage])
+  const { isLoading } = useFetchHighlightData()
 
   useScrollSnap(carouselRef, slideRefs, setStep)
+
+  if (isLoading) return <ContractAnalysisLoading />
 
   return (
     <div>

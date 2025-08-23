@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 
 import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
 import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
@@ -10,8 +10,7 @@ import { useUploadedImagesContext } from '@/stores/useUploadedImagesContext'
 
 import { ContractAnalysisImageSlideTranslation } from '../../../components/contract-image-slide/ContractImageSlideTranslation'
 import { ContractAnalysisLoading } from '../components/ContractAnalysisLoading'
-import { useOcrAnalysis } from '../hooks/useOcrAnalysis'
-import { useTranslation } from '../hooks/useTranslation'
+import { useFetchOcrTranslationData } from '../hooks/useFetchOcrTranslationData'
 
 import styles from './ContractAnalysisTranslate.module.css'
 
@@ -23,26 +22,12 @@ import styles from './ContractAnalysisTranslate.module.css'
 
 export const ContractAnalysisTranslate = () => {
   const carouselRef = useRef(null)
-  const { items } = useUploadedImagesContext()
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
-
+  const { items } = useUploadedImagesContext()
+  const { isLoading } = useFetchOcrTranslationData()
   const { currentStep, setStep } = useStep()
 
   useScrollSnap(carouselRef, slideRefs, setStep)
-
-  const [isLoading, setIsLoading] = useState(false)
-  const { fetchOcrData } = useOcrAnalysis()
-  const { fetchTranslationData } = useTranslation()
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const ocrData = await fetchOcrData()
-      await fetchTranslationData(ocrData)
-    }
-    setIsLoading(true)
-    fetchData()
-    setIsLoading(false)
-  }, [fetchOcrData, fetchTranslationData])
 
   if (isLoading) return <ContractAnalysisLoading />
 

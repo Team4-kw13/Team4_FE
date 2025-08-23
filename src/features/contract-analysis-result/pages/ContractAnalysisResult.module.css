@@ -25,6 +25,10 @@
   height: calc(100svh - 82.5px);
 }
 
+.snap-last-item {
+  min-height: calc(100svh - 82.5px);
+}
+
 .scroll-button {
   margin: -17px 16px 0 auto;
 }

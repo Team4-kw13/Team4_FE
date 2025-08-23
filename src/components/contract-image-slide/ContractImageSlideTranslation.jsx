@@ -1,7 +1,11 @@
 import { Fragment, useState } from 'react'
 
 import { useImageNaturals } from '@/hooks/useImageNaturals'
-import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
+import {
+  useDocumentAnalysisActions,
+  useOcrByPage,
+  useTranslationByPage,
+} from '@/stores/DocumentAnalysisStore'
 import { toPercentRect } from '@/utils/toPercentRect'
 
 import { OcrOverlayBox } from './OcrOverlayBox'
@@ -31,15 +35,16 @@ export const ContractAnalysisImageSlideTranslation = ({ images, slideRefs, readO
   const [activeFieldId, setActiveFieldId] = useState(null)
   const { imageRefs, naturalSizes, handleImageLoad } = useImageNaturals()
 
-  const {
-    state: { ocrByPage, translationByPage },
-    actions: { updateTranslationText, handleEditTranslate },
-  } = useDocumentAnalysisContext()
+  const ocrByPage = useOcrByPage()
+  const translationByPage = useTranslationByPage()
+  const { updateTranslationText, handleEditTranslate } = useDocumentAnalysisActions()
 
   const handleEdit = (pageKey, ocrIndex, nextPlainText) => {
     updateTranslationText(pageKey, ocrIndex, nextPlainText)
     handleEditTranslate()
   }
+
+  if (!translationByPage) return null
 
   return (
     <div className={styles['container']}>

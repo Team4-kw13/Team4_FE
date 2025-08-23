@@ -1,7 +1,11 @@
 import { Fragment, useState } from 'react'
 
 import { useImageNaturals } from '@/hooks/useImageNaturals'
-import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
+import {
+  useDocumentAnalysisActions,
+  useHighlightedTextByPage,
+  useOcrByPage,
+} from '@/stores/DocumentAnalysisStore'
 import { toPercentRect } from '@/utils/toPercentRect'
 
 import { HighlightedTextEditor } from './HighlightedTextEditor'
@@ -31,15 +35,17 @@ export const ContractAnalysisImageSlideHighlight = ({ images, slideRefs, readOnl
   const [activeFieldId, setActiveFieldId] = useState(null)
   const { imageRefs, naturalSizes, handleImageLoad } = useImageNaturals()
 
-  const {
-    state: { ocrByPage, highlightedTextByPage },
-    actions: { updateHighlightedTextAndSync, handleEditHighlight },
-  } = useDocumentAnalysisContext()
+  const ocrByPage = useOcrByPage()
+  const highlightedTextByPage = useHighlightedTextByPage()
+
+  const { updateHighlightedTextAndSync, handleEditHighlight } = useDocumentAnalysisActions()
 
   const handleEdit = (pageKey, ocrIndex, nextPlainText) => {
     updateHighlightedTextAndSync(pageKey, ocrIndex, nextPlainText)
     handleEditHighlight()
   }
+
+  if (!highlightedTextByPage) return null
 
   return (
     <div className={styles['container']}>

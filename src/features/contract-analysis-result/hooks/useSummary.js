@@ -1,27 +1,24 @@
-import { useState } from 'react'
+import { useCallback } from 'react'
 
-import { useDocumentAnalysisContext } from '@/stores/useDocumentAnalysisContext'
+import { useDocumentAnalysisActions } from '@/stores/DocumentAnalysisStore'
 
 import { PROMPT_SUMMARY } from '../constants/prompt'
 import { requestOpenAI } from '../services/gpt'
 
 export const useSummary = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const {
-    actions: { saveSummary, handleAfterFetch },
-  } = useDocumentAnalysisContext()
+  const { saveSummary, handleAfterFetch } = useDocumentAnalysisActions()
 
-  const fetchSummaryData = async (translationData) => {
-    // const response = SUMMARY_DUMMY_DATA
+  const fetchSummaryData = useCallback(
+    async (translationData) => {
+      // const response = SUMMARY_DUMMY_DATA
 
-    setIsLoading(true)
-    const response = await requestOpenAI(PROMPT_SUMMARY, translationData)
-    setIsLoading(false)
+      const response = await requestOpenAI(PROMPT_SUMMARY, translationData)
 
-    console.log(response)
-    saveSummary(response)
-    handleAfterFetch('page3')
-  }
+      saveSummary(response)
+      handleAfterFetch('page3')
+    },
+    [saveSummary, handleAfterFetch],
+  )
 
-  return { isLoading, fetchSummaryData }
+  return { fetchSummaryData }
 }
