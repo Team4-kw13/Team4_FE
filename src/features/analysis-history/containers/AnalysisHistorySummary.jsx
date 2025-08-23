@@ -1,6 +1,6 @@
 import { AnalysisSummarySection } from '@/components/analysis-summary-section/AnalysisSummarySection'
 import { Icon } from '@/components/Icon/Icon'
-import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
+import { UnderlineText } from '@/components/underline-text/UnderlineText'
 import { useDocumentHistorySummary } from '@/stores/DocumentHistoryStore'
 
 import styles from './AnalysisHistorySummary.module.css'

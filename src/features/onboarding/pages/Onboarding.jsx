@@ -1,124 +1,102 @@
-import { useCallback, useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useSwipeable } from 'react-swipeable'
+// src/features/onboarding/containers/Onboarding.jsx
+import { useEffect, useMemo, useRef } from 'react'
+import cx from 'classnames'
 
-import iconB from '@/assets/images/folder.svg'
-import iconE from '@/assets/images/note.svg'
-import img3 from '@/assets/onboarding/onboarding3.svg'
-import iconA from '@/assets/onboarding/onboarding4.svg'
-import iconC from '@/assets/onboarding/onboarding5.svg'
-import iconD from '@/assets/onboarding/onboarding6.svg'
-import iconF from '@/assets/onboarding/onboarding7.svg'
-import img2 from '@/assets/onboarding/onboarding8.svg'
+import { PrimaryButton } from '@/components/primary-button/PrimaryButton'
+import { useScrollSnap } from '@/hooks/useScrollSnap'
+import { useStep } from '@/stores/useStep'
 
-import { OnboardingBar } from '../components/OnboardingBar'
-import { OnboardingButton } from '../components/OnboardingButton'
-import { OnboardingItem } from '../components/OnboardingItem'
+import { OnboardingFirst } from '../components/OnboardingFirst'
+import { OnboardingSecond } from '../components/OnboardingSecond'
+import { OnboardingThird } from '../components/OnboardingThird'
 
 import styles from './Onboarding.module.css'
 
+/**
+ * 온보딩 컨테이너
+ *
+ * - 스크롤 → 스텝 동기화: useScrollSnap
+ * - 버튼 클릭(프로그램 기원)일 때만 스텝 → 스크롤 동기화
+ *
+ * @returns {import('react').JSX.Element}
+ */
 export function Onboarding() {
-  const nav = useNavigate()
+  const carouselRef = useRef(null)
+  const { currentStep, setStep, goToNextStep } = useStep(3)
 
-  const ITEMS = useMemo(
-    () => [
-      {
-        id: 0,
-        lines: ['복잡한 부동산 계약서,', '이해하기 어렵나요?'],
-        images: [iconA, iconB, iconC, iconD, iconE, iconF], // ★ 6장 묶음
-        alt: '계약 관련 아이콘 6개',
-        halo: 'halo1',
-      },
-      {
-        id: 1,
-        lines: ['중요한 조항을', '한집말이가 설명할게요!'],
-        image: img2,
-        alt: '로봇',
-        halo: 'halo2',
-      },
-      {
-        id: 2,
-        lines: ['부동산 계약서 이해의 시작', '한집말이와 함께해요.'],
-        image: img3,
-        alt: '집+별',
-        halo: 'halo3',
-      },
-    ],
-    [],
-  )
+  const slideRef1 = useRef(null)
+  const slideRef2 = useRef(null)
+  const slideRef3 = useRef(null)
+  const slideRefs = useMemo(() => [slideRef1, slideRef2, slideRef3], [])
 
-  const [step, setStep] = useState(0)
-  const last = step === ITEMS.length - 1
+  const shouldAutoScrollRef = useRef(false)
 
-  const clamp = useCallback((v) => Math.max(0, Math.min(v, ITEMS.length - 1)), [ITEMS.length])
-
-  const go = useCallback(
-    (deltaOrIndex) =>
-      setStep((s) => {
-        const next =
-          typeof deltaOrIndex === 'number' && deltaOrIndex % 1 === 0
-            ? deltaOrIndex > ITEMS.length
-              ? ITEMS.length - 1
-              : deltaOrIndex < 0
-              ? 0
-              : Number.isInteger(deltaOrIndex) && Math.abs(deltaOrIndex) > 1
-              ? deltaOrIndex
-              : s + deltaOrIndex
-            : s
-        return clamp(
-          typeof deltaOrIndex === 'number' && Math.abs(deltaOrIndex) <= 1 ? s + deltaOrIndex : next,
-        )
-      }),
-    [clamp, ITEMS.length],
-  )
-
-  const next = useCallback(() => {
-    if (!last) go(+1)
-  }, [last, go])
-  const prev = useCallback(() => go(-1), [go])
-
-  const handleCTA = useCallback(() => {
-    if (last) nav('/home')
-    else go(+1)
-  }, [last, nav, go])
-
-  const handlers = useSwipeable({
-    onSwipedLeft: next,
-    onSwipedRight: prev,
-    trackMouse: true,
-    preventScrollOnSwipe: true,
-    delta: 10,
+  useScrollSnap(carouselRef, slideRefs, setStep, {
+    isProgrammaticRef: shouldAutoScrollRef,
   })
 
+  useEffect(() => {
+    if (!shouldAutoScrollRef.current) return
+
+    const container = carouselRef.current
+    const target = slideRefs?.[currentStep - 1]?.current
+    if (!container || !target) {
+      shouldAutoScrollRef.current = false
+      return
+    }
+
+    const handleScrollEnd = () => {
+      shouldAutoScrollRef.current = false
+      container.removeEventListener('scrollend', handleScrollEnd)
+    }
+    container.addEventListener('scrollend', handleScrollEnd, { once: true })
+
+    const tid = setTimeout(() => {
+      shouldAutoScrollRef.current = false
+      container.removeEventListener('scrollend', handleScrollEnd)
+    }, 600)
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+
+    return () => clearTimeout(tid)
+  }, [currentStep, slideRefs])
+
+  const handleNextClick = () => {
+    shouldAutoScrollRef.current = true
+    goToNextStep()
+  }
+
   return (
-    <section className={styles.container}>
-      <div className={styles.viewport} {...handlers}>
-        <div
-          className={styles.track}
-          style={{ transform: `translateX(-${step * 100}%)` }}
-          aria-live='polite'
-        >
-          {ITEMS.map((it) => (
-            <div className={styles.slide} key={it.id}>
-              <OnboardingItem
-                id={it.id}
-                lines={it.lines}
-                image={Array.isArray(it.image) ? undefined : it.image}
-                images={Array.isArray(it.image) ? it.image : it.images} // 방어적 전달
-                alt={it.alt}
-                halo={it.halo}
-              />
-            </div>
-          ))}
-        </div>
+    <div className={styles.container}>
+      <div ref={carouselRef} className={styles['scroll-container']}>
+        <section data-index={1} ref={slideRefs[0]} className={styles['scroll-item']}>
+          <OnboardingFirst />
+        </section>
+        <section data-index={2} ref={slideRefs[1]} className={styles['scroll-item']}>
+          <OnboardingSecond />
+        </section>
+        <section data-index={3} ref={slideRefs[2]} className={styles['scroll-item']}>
+          <OnboardingThird />
+        </section>
       </div>
 
-      <div className={styles.bottom}>
-        <OnboardingBar total={ITEMS.length} activeIndex={step} onSelect={(i) => setStep(i)} />
-        <OnboardingButton onClick={handleCTA}>
-          {last ? '한집말이 시작하기' : '한집말이 시작하기'}
-        </OnboardingButton>
+      <div className={styles['dot-container']}>
+        {[...Array(3)].map((_, index) => (
+          <div
+            key={index}
+            className={cx(styles.dot, {
+              [styles['dot--active']]: currentStep === index + 1,
+            })}
+          />
+        ))}
       </div>
-    </section>
+
+      <PrimaryButton
+        size='lg'
+        label='한집말이 시작하기'
+        className={styles['start-button']}
+        onClick={handleNextClick}
+      />
+    </div>
   )
 }

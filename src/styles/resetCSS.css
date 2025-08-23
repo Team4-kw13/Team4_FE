@@ -103,7 +103,7 @@ section {
   box-sizing: border-box;
 }
 body {
-  line-height: 1;
+  line-height: normal;
   -ms-overflow-style: none;
 }
 ::-webkit-scrollbar {

@@ -1,4 +1,4 @@
-import { BackButton } from '@/components/BackButton/BackButton'
+import { BackButton } from '@/components/back-button/BackButton'
 import { ListLawyerHeader } from '@/features/list-lawyer/components/ListLawyerHeader'
 import { ListLawyerList } from '@/features/list-lawyer/components/ListLawyerList'
 

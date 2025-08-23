@@ -1,4 +1,4 @@
-import { PrimaryButton } from '@/components/PrimaryButton/PrimaryButton'
+import { PrimaryButton } from '@/components/primary-button/PrimaryButton'
 
 import { ContractAnalysisHeader } from '../components/ContractAnalysisHeader'
 import { ContractAnalysisStepList } from '../components/ContractAnalysisStepList'

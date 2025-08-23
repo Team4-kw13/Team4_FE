@@ -1,4 +1,4 @@
-import { BackButton } from '@/components/BackButton/BackButton'
+import { BackButton } from '@/components/back-button/BackButton'
 
 import { MyPageActivity } from '../components/MyPageActivity'
 import { MyPageProfile } from '../components/MyPageProfile'

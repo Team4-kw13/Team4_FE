@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import cx from 'classnames'
 
-import { ScrollToTopButton } from '@/components/ScrollToTopButton/ScrollToTopButton'
+import { ScrollToTopButton } from '@/components/scroll-to-top-button/ScrollToTopButton'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useAnalysisResultStepActions } from '@/stores/AnalysisResultStep'
 

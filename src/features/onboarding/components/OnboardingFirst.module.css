@@ -1,0 +1,57 @@
+.subtitle {
+  padding-top: 19.7svh;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 36px;
+  text-align: center;
+}
+
+.content {
+  position: relative;
+  padding-top: 7.3svh;
+  width: 100%;
+  height: 408px;
+  overflow-x: hidden;
+}
+
+.icon-container {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  width: 120%;
+  height: 265px;
+  margin-left: -10%;
+}
+
+.blur {
+  filter: blur(2px);
+}
+
+.blur-box {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  filter: blur(25px);
+}
+
+.blur-box-left {
+  left: 0;
+}
+
+.blur-box-right {
+  right: 0;
+}
+
+.circle {
+  position: absolute;
+  width: 172px;
+  height: 172px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(75px);
+  background-color: #ffce3b;
+  z-index: -1;
+}
