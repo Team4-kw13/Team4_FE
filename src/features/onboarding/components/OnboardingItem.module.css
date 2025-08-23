@@ -9,7 +9,7 @@
   text-align: center;
   display: grid;
   gap: 6px;
-  margin: 160px 36px 24px 60px;
+  margin: 160px 75px 0 75px;
 }
 
 .title {
@@ -25,7 +25,7 @@
   display: grid;
   place-items: center;
   padding-top: 8px;
-  min-height: 265px;
+  min-height: 400px;
 }
 
 .haloBase {
@@ -59,10 +59,10 @@
 }
 
 .image {
-  width: 230px;
+  width: 258px;
   height: auto;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .cluster {
@@ -89,4 +89,30 @@
     transform: scale(0.9);
     transform-origin: center;
   }
+}
+
+.clusterWrapper {
+  position: relative; /* rect들이 cluster 기준으로 붙도록 */
+  display: inline-block;
+}
+
+.rectLeft,
+.rectRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 81px;
+  height: 408px;
+  background: rgba(255, 255, 255, 0.8);
+  filter: blur(25px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.rectLeft {
+  left: -81px; /* 클러스터 바깥으로 삐져나오게 */
+}
+
+.rectRight {
+  right: -81px;
 }

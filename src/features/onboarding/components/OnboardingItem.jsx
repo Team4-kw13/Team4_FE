@@ -1,6 +1,6 @@
 import styles from './OnboardingItem.module.css'
 
-export function OnboardingItem({ lines, image, images, alt, halo }) {
+export function OnboardingItem({ id, lines, image, images, alt, halo }) {
   const hasCluster = Array.isArray(images) && images.length > 0
 
   return (
@@ -17,15 +17,24 @@ export function OnboardingItem({ lines, image, images, alt, halo }) {
         {halo && <div className={`${styles.haloBase} ${styles[halo]}`} aria-hidden='true' />}
 
         {hasCluster ? (
-          <div className={styles.cluster} role='group' aria-label={alt || '이미지 묶음'}>
-            {images.map((src, i) => (
-              <img
-                key={i}
-                className={styles.clusterItem}
-                src={src}
-                alt={alt || `아이콘 ${i + 1}`}
-              />
-            ))}
+          <div className={styles.clusterWrapper}>
+            {/* id=0일 때만 테두리 추가 */}
+            {id === 0 && (
+              <>
+                <div className={styles.rectLeft} aria-hidden='true' />
+                <div className={styles.rectRight} aria-hidden='true' />
+              </>
+            )}
+            <div className={styles.cluster} role='group' aria-label={alt || '이미지 묶음'}>
+              {images.map((src, i) => (
+                <img
+                  key={i}
+                  className={styles.clusterItem}
+                  src={src}
+                  alt={alt || `아이콘 ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
         ) : (
           <img className={styles.image} src={image} alt={alt} />

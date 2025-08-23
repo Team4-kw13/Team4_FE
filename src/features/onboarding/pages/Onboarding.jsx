@@ -4,12 +4,12 @@ import { useSwipeable } from 'react-swipeable'
 
 import iconB from '@/assets/images/folder.svg'
 import iconE from '@/assets/images/note.svg'
-import img2 from '@/assets/onboarding/onboarding2.svg'
 import img3 from '@/assets/onboarding/onboarding3.svg'
 import iconA from '@/assets/onboarding/onboarding4.svg'
 import iconC from '@/assets/onboarding/onboarding5.svg'
 import iconD from '@/assets/onboarding/onboarding6.svg'
 import iconF from '@/assets/onboarding/onboarding7.svg'
+import img2 from '@/assets/onboarding/onboarding8.svg'
 
 import { OnboardingBar } from '../components/OnboardingBar'
 import { OnboardingButton } from '../components/OnboardingButton'
@@ -101,6 +101,7 @@ export function Onboarding() {
           {ITEMS.map((it) => (
             <div className={styles.slide} key={it.id}>
               <OnboardingItem
+                id={it.id}
                 lines={it.lines}
                 image={Array.isArray(it.image) ? undefined : it.image}
                 images={Array.isArray(it.image) ? it.image : it.images} // 방어적 전달
