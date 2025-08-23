@@ -2,11 +2,12 @@ import { useRef } from 'react'
 
 import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
 import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
-import { ContractAnalysisImageSlideHighlight } from '@/components/contract-image-slide/ContractImageSlideHighlight'
 import { StepProgress } from '@/components/StepProgress/StepProgress'
 import { UnderlineText } from '@/components/UnderlineText/UnderlineText'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { useStep } from '@/stores/useStep'
+
+import { HighlightHistoryImageSlide } from '../components/HighlightHistoryImageSlide'
 
 import styles from './AnalysisHistoryHighlight.module.css'
 
@@ -32,8 +33,11 @@ export const AnalysisHistoryHighlight = () => {
       </p>
 
       <section ref={carouselRef} className={styles['analysis-section']}>
-        <ContractAnalysisImageSlideHighlight images={[]} slideRefs={slideRefs} />
-        <ContractAnalysisDownloadButton refs={slideRefs} />
+        <HighlightHistoryImageSlide slideRefs={slideRefs} />
+        <ContractAnalysisDownloadButton
+          refs={slideRefs}
+          getFileName={(i) => `하이라이트 ${i + 1}.png`}
+        />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>
           <StepProgress currentStep={currentStep} />

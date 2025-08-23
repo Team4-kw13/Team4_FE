@@ -21,12 +21,13 @@ export const AnalysisHistory = () => {
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
   const { setStep } = useStep()
-  const { isLoading, isError } = useFetchHistoryData(contractId)
+  const { data, isLoading, isError } = useFetchHistoryData(contractId)
 
   useScrollSnap(carouselRef, slideRefs, setStep)
 
   if (isLoading) return <ContractAnalysisLoading />
   if (isError) return <div>error</div>
+  if (!data) return null
 
   return (
     <div className={styles['container']}>
