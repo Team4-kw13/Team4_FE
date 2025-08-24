@@ -47,7 +47,7 @@ export const ContractAnalysisTranslate = () => {
 
       <section ref={carouselRef} className={styles['analysis-section']}>
         <ContractAnalysisImageSlideTranslation images={items} slideRefs={slideRefs} />
-        <ContractAnalysisDownloadButton refs={slideRefs} />
+        <ContractAnalysisDownloadButton refs={slideRefs} activeIndex={currentStep - 1} />
         <ContractAnalysisTooltip />
         <div className={styles['progress']}>
           <StepProgress currentStep={currentStep} />

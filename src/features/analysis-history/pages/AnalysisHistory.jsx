@@ -3,6 +3,7 @@ import cx from 'classnames'
 import { useParams } from 'react-router-dom'
 
 import { BackButton } from '@/components/back-button/BackButton'
+import { Icon } from '@/components/Icon/Icon'
 import { ScrollToTopButton } from '@/components/scroll-to-top-button/ScrollToTopButton'
 import { ContractAnalysisLoading } from '@/features/contract-analysis-result/components/ContractAnalysisLoading'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
@@ -72,6 +73,10 @@ export const AnalysisHistory = () => {
             <ScrollToTopButton targetRef={carouselRef} />
           </div>
         </section>
+      </div>
+
+      <div className={styles['scroll-down-button']}>
+        <Icon name='scroll-down' width={44} height={16} />
       </div>
     </div>
   )

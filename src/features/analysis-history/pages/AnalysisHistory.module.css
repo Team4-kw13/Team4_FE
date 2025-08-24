@@ -39,3 +39,11 @@
 .scroll-button {
   margin: 14px 16px 60px auto;
 }
+
+.scroll-down-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 3%;
+  opacity: 20%;
+}
