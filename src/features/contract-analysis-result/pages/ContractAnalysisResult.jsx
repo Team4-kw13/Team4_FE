@@ -82,7 +82,7 @@ export const ContractAnalysisResult = () => {
           </section>
         )}
       </div>
-      {currentStep !== 3 && (
+      {isAllTranslated && isAllHighlighted && currentStep !== 3 && (
         <div className={styles['scroll-down-button']}>
           <Icon name='scroll-down' width={44} height={16} />
         </div>

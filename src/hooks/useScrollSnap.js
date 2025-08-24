@@ -39,7 +39,7 @@ export const useScrollSnap = (carouselRef, slideRefs, setStep) => {
       },
       {
         root,
-        threshold: [0.35, 0.75, 0.98],
+        threshold: [0.5, 0.75, 0.98],
       },
     )
 
