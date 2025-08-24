@@ -46,16 +46,16 @@ export const useFetchOcrTranslationData = () => {
 
       const req = (file, tid) => requestOcr(createOcrFormData(file, tid))
       const list = [
-        { file: items[0]?.file, tid: import.meta.env.VITE_CLOVA_TEMPLATE_ID1 }, // page1 구성 요소
-        { file: items[1]?.file, tid: import.meta.env.VITE_CLOVA_TEMPLATE_ID2 }, // page2-1
-        { file: items[1]?.file, tid: import.meta.env.VITE_CLOVA_TEMPLATE_ID3 }, // page2-2
-        { file: items[2]?.file, tid: import.meta.env.VITE_CLOVA_TEMPLATE_ID4 }, // page3-1
-        { file: items[2]?.file, tid: import.meta.env.VITE_CLOVA_TEMPLATE_ID5 }, // page3-2
+        { file: items[0]?.file, tid: import.meta.env.VITE_CLOVA_TEMPLATE_ID1 },
+        { file: items[1]?.file, tid: import.meta.env.VITE_CLOVA_TEMPLATE_ID2 },
+        { file: items[1]?.file, tid: import.meta.env.VITE_CLOVA_TEMPLATE_ID3 },
+        { file: items[2]?.file, tid: import.meta.env.VITE_CLOVA_TEMPLATE_ID4 },
+        { file: items[2]?.file, tid: import.meta.env.VITE_CLOVA_TEMPLATE_ID5 },
       ]
 
       const p0 = req(list[0].file, list[0].tid)
-      const p12 = Promise.all([req(list[1].file, list[1].tid), req(list[2].file, list[2].tid)]) // page2
-      const p34 = Promise.all([req(list[3].file, list[3].tid), req(list[4].file, list[4].tid)]) // page3
+      const p12 = Promise.all([req(list[1].file, list[1].tid), req(list[2].file, list[2].tid)])
+      const p34 = Promise.all([req(list[3].file, list[3].tid), req(list[4].file, list[4].tid)])
 
       p0.then(async (r0) => {
         if (cancelled) return

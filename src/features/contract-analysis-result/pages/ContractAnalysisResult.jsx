@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import cx from 'classnames'
 
 import { Icon } from '@/components/Icon/Icon'
@@ -7,6 +7,7 @@ import {
   useAnalysisResultCurrentStep,
   useAnalysisResultStepActions,
 } from '@/stores/AnalysisResultStep'
+import { useHighlightedTextByPage, useTranslationByPage } from '@/stores/DocumentAnalysisStore'
 
 import { ContractAnalysisHighlight } from '../containers/ContractAnalysisHighlight'
 import { ContractAnalysisSummary } from '../containers/ContractAnalysisSummary'
@@ -20,6 +21,25 @@ export const ContractAnalysisResult = () => {
 
   const currentStep = useAnalysisResultCurrentStep()
   const { setStep } = useAnalysisResultStepActions()
+
+  const translate = useTranslationByPage()
+  const highlight = useHighlightedTextByPage()
+
+  const isAllTranslated = useMemo(
+    () =>
+      ['page1', 'page2', 'page3'].every(
+        (k) => Array.isArray(translate?.[k]) && translate[k].length > 0,
+      ),
+    [translate],
+  )
+
+  const isAllHighlighted = useMemo(
+    () =>
+      ['page1', 'page2', 'page3'].every(
+        (k) => Array.isArray(highlight?.[k]) && highlight[k].length > 0,
+      ),
+    [highlight],
+  )
 
   useEffect(() => {
     setStep(0)
@@ -40,23 +60,27 @@ export const ContractAnalysisResult = () => {
           <ContractAnalysisTranslate />
         </section>
 
-        <section
-          ref={slideRefs[1]}
-          className={cx(styles['carousel-item'], styles['snap-item'])}
-          data-index={2}
-          aria-label={'하이라이트 섹션'}
-        >
-          <ContractAnalysisHighlight />
-        </section>
+        {isAllTranslated && (
+          <section
+            ref={slideRefs[1]}
+            className={cx(styles['carousel-item'], styles['snap-item'])}
+            data-index={2}
+            aria-label={'하이라이트 섹션'}
+          >
+            <ContractAnalysisHighlight />
+          </section>
+        )}
 
-        <section
-          ref={slideRefs[2]}
-          className={cx(styles['carousel-item'], styles['snap-last-item'])}
-          data-index={3}
-          aria-label={'요약 섹션'}
-        >
-          <ContractAnalysisSummary containerRef={carouselRef} />
-        </section>
+        {isAllTranslated && isAllHighlighted && (
+          <section
+            ref={slideRefs[2]}
+            className={cx(styles['carousel-item'], styles['snap-last-item'])}
+            data-index={3}
+            aria-label={'요약 섹션'}
+          >
+            <ContractAnalysisSummary containerRef={carouselRef} />
+          </section>
+        )}
       </div>
       {currentStep !== 3 && (
         <div className={styles['scroll-down-button']}>
