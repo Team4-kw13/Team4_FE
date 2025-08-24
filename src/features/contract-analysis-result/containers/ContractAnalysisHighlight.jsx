@@ -65,6 +65,7 @@ export const ContractAnalysisHighlight = () => {
         <ContractAnalysisImageSlideHighlight images={items} slideRefs={slideRefs} />
         <ContractAnalysisDownloadButton
           refs={slideRefs}
+          activeIndex={currentStep - 1}
           getFileName={(i) => `하이라이트 ${i + 1}.png`}
         />
         <ContractAnalysisTooltip />
