@@ -22,6 +22,8 @@ import styles from './StepProgress.module.css'
 export const StepProgress = ({ totalSteps = 3, currentStep = 1, className = '', ...rest }) => {
   const clampedCurrent = Math.min(Math.max(currentStep, 1), totalSteps)
 
+  console.log(currentStep)
+
   return (
     <div
       className={cx(styles['container'], className)}

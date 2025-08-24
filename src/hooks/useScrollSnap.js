@@ -10,29 +10,40 @@ import { useEffect } from 'react'
  * @param {(step: number) => void} setStep
  *   현재 스텝 상태를 갱신하는 함수
  */
-
 export const useScrollSnap = (carouselRef, slideRefs, setStep) => {
   useEffect(() => {
     const root = carouselRef.current
-    if (!root || !Array.isArray(slideRefs) || slideRefs.length === 0) return
+    if (!root) return
+    const slides = (Array.isArray(slideRefs) ? slideRefs : [])
+      .map((r) => r?.current)
+      .filter(Boolean)
+    if (!slides.length) return
 
+    root.scrollTo({ left: 0, behavior: 'auto' })
+
+    let current = 1
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const stepIndex = entry.target.dataset.index
-            if (stepIndex) setStep(Number(stepIndex))
+        let best = null
+        for (const e of entries) {
+          if (!e.isIntersecting) continue
+          if (!best || e.intersectionRatio > best.intersectionRatio) best = e
+        }
+        if (best) {
+          const idx = Number(best.target.dataset.index)
+          if (idx && idx !== current) {
+            current = idx
+            setStep(idx)
           }
-        })
+        }
       },
-      { root, rootMargin: '0px', threshold: [0.25, 0.5, 0.75] },
+      {
+        root,
+        threshold: [0.35, 0.75, 0.98],
+      },
     )
 
-    slideRefs.forEach((ref) => {
-      const el = ref?.current
-      if (el) observer.observe(el)
-    })
-
+    slides.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [carouselRef, setStep, slideRefs])
+  }, [carouselRef, slideRefs, setStep])
 }
