@@ -1,6 +1,5 @@
 import { useCallback } from 'react'
 
-// import { SUMMARY_DUMMY_DATA } from '@/constants/dummy'
 import { useDocumentAnalysisActions } from '@/stores/DocumentAnalysisStore'
 
 import { PROMPT_SUMMARY } from '../constants/prompt'
@@ -11,8 +10,6 @@ export const useSummary = () => {
 
   const fetchSummaryData = useCallback(
     async (translationData) => {
-      // const response = SUMMARY_DUMMY_DATA
-
       const response = await requestOpenAI(PROMPT_SUMMARY, translationData)
 
       saveSummary(response)

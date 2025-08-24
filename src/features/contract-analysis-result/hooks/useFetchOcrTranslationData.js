@@ -11,27 +11,6 @@ import { useDocumentAnalysisActions } from '@/stores/DocumentAnalysisStore'
 import { useTranslation } from './useTranslation'
 
 export const useFetchOcrTranslationData = () => {
-  // const [isLoading, setIsLoading] = useState(false)
-  // const { fetchOcrData } = useOcrAnalysis()
-  // const { fetchTranslationData } = useTranslation()
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setIsLoading(true)
-  //     try {
-  //       const ocr = await fetchOcrData()
-  //       await fetchTranslationData(ocr)
-  //     } catch (e) {
-  //       console.error(e)
-  //     } finally {
-  //       setIsLoading(false)
-  //     }
-  //   }
-  //   fetchData()
-  // }, [fetchOcrData, fetchTranslationData])
-
-  // return { isLoading }
-
   const [isFirstPageReady, setIsFirstPageReady] = useState(false)
 
   const { items } = useUploadedImages()

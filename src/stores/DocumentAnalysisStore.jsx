@@ -36,9 +36,6 @@ export const useDocumentAnalysisStore = create((set) => ({
         },
       })),
 
-    /** 번역문 텍스트 저장 */
-    setTranslationByPage: (pages) => set(() => ({ translationByPage: { ...pages } })),
-
     /** 특정 페이지의 번역문 텍스트 수정 (인덱스 기반) */
     updateTranslationText: (pageKey, targetIndex, newText) =>
       set((state) => {
