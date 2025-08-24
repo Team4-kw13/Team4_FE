@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import cx from 'classnames'
 
 import { Icon } from '@/components/Icon/Icon'
@@ -20,6 +20,10 @@ export const ContractAnalysisResult = () => {
 
   const currentStep = useAnalysisResultCurrentStep()
   const { setStep } = useAnalysisResultStepActions()
+
+  useEffect(() => {
+    setStep(0)
+  }, [setStep])
 
   useScrollSnap(carouselRef, slideRefs, setStep)
 

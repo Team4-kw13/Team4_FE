@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { ContractAnalysisDownloadButton } from '@/components/analysis-download-button/ContractAnalysisDownloadButton'
 import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractAnalysisTooltip'
@@ -21,6 +21,10 @@ export const ContractAnalysisHighlight = () => {
 
   const { currentStep, setStep } = useStep()
   const { isLoading } = useFetchHighlightData()
+
+  useEffect(() => {
+    setStep(0)
+  }, [setStep])
 
   useScrollSnap(carouselRef, slideRefs, setStep)
 
