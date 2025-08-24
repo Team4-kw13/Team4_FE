@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import cx from 'classnames'
 import { useParams } from 'react-router-dom'
 
@@ -21,10 +21,14 @@ export const AnalysisHistory = () => {
   const carouselRef = useRef(null)
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
-  const { setStep } = useStep()
+  const { setStep, reset } = useStep()
   const { data, isLoading, isError } = useFetchHistoryData(contractId)
 
   useScrollSnap(carouselRef, slideRefs, setStep)
+
+  useEffect(() => {
+    reset()
+  }, [])
 
   if (isLoading) return <ContractAnalysisLoading />
   if (isError) return <div>error</div>
