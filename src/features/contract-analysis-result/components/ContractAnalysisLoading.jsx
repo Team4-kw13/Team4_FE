@@ -4,7 +4,7 @@ import styles from './ContractAnalysisLoading.module.css'
 
 export const ContractAnalysisLoading = () => {
   return (
-    <div className={styles['container']} r>
+    <div className={styles['container']}>
       <Icon name='note' width={120} height={124} />
       <p className={styles['loading-text']}>분석 중</p>
       <div className={styles['dot-container']}>
