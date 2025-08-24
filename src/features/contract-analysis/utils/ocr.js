@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const OCR_INVOKE_URL = import.meta.env.VITE_CLOVA_OCR_INVOKE_URL
-const OCR_SECRET = import.meta.env.VITE_CLOVA_OCR_SECRET
+const OCR_SECRET = import.meta.env.VITE_CLOVA_OCR
 
 /**
  * OCR 원본 데이터를 앱 내부에서 사용할 수 있는 형태로 변환
