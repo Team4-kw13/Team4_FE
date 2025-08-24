@@ -1,9 +1,12 @@
 import { useRef } from 'react'
 import cx from 'classnames'
 
-import { ScrollToTopButton } from '@/components/scroll-to-top-button/ScrollToTopButton'
+import { Icon } from '@/components/Icon/Icon'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
-import { useAnalysisResultStepActions } from '@/stores/AnalysisResultStep'
+import {
+  useAnalysisResultCurrentStep,
+  useAnalysisResultStepActions,
+} from '@/stores/AnalysisResultStep'
 
 import { ContractAnalysisHighlight } from '../containers/ContractAnalysisHighlight'
 import { ContractAnalysisSaveButton } from '../containers/ContractAnalysisSaveButton'
@@ -16,6 +19,7 @@ export const ContractAnalysisResult = () => {
   const carouselRef = useRef(null)
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
+  const currentStep = useAnalysisResultCurrentStep()
   const { setStep } = useAnalysisResultStepActions()
 
   useScrollSnap(carouselRef, slideRefs, setStep)
@@ -49,14 +53,14 @@ export const ContractAnalysisResult = () => {
           aria-label={'요약 섹션'}
         >
           <ContractAnalysisSummary containerRef={carouselRef} />
-
-          <div className={styles['scroll-button']}>
-            <ScrollToTopButton targetRef={carouselRef} />
-          </div>
-
           <ContractAnalysisSaveButton />
         </section>
       </div>
+      {currentStep !== 3 && (
+        <div className={styles['scroll-down-button']}>
+          <Icon name='scroll-down' width={44} height={16} />
+        </div>
+      )}
     </>
   )
 }

@@ -23,3 +23,8 @@
   font-size: var(--font-common-title-size);
   font-weight: var(--font-common-title-weight);
 }
+
+.scroll-button {
+  width: fit-content;
+  margin: -17px 16px 0 auto;
+}

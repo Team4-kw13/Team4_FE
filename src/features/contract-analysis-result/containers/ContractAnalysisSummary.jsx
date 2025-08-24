@@ -1,5 +1,6 @@
 import { AnalysisSummarySection } from '@/components/analysis-summary-section/AnalysisSummarySection'
 import { Icon } from '@/components/Icon/Icon'
+import { ScrollToTopButton } from '@/components/scroll-to-top-button/ScrollToTopButton'
 import { UnderlineText } from '@/components/underline-text/UnderlineText'
 import { useSummary } from '@/stores/DocumentAnalysisStore'
 
@@ -8,7 +9,7 @@ import { useFetchSummaryData } from '../hooks/useFetchSummaryData'
 
 import styles from './ContractAnalysisSummary.module.css'
 
-export const ContractAnalysisSummary = () => {
+export const ContractAnalysisSummary = ({ containerRef }) => {
   const { isLoading } = useFetchSummaryData()
   const summary = useSummary()
 
@@ -44,6 +45,10 @@ export const ContractAnalysisSummary = () => {
 
         <AnalysisSummarySection items={summary.warning} />
       </section>
+
+      <div className={styles['scroll-button']}>
+        <ScrollToTopButton targetRef={containerRef} />
+      </div>
     </div>
   )
 }
