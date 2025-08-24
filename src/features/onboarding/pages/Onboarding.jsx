@@ -1,9 +1,11 @@
 // src/features/onboarding/containers/Onboarding.jsx
 import { useEffect, useMemo, useRef } from 'react'
 import cx from 'classnames'
+import { useNavigate } from 'react-router-dom'
 
 import { PrimaryButton } from '@/components/primary-button/PrimaryButton'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
+import { ROUTES } from '@/router/routes.constant'
 import { useStep } from '@/stores/useStep'
 
 import { OnboardingFirst } from '../components/OnboardingFirst'
@@ -21,6 +23,7 @@ import styles from './Onboarding.module.css'
  * @returns {import('react').JSX.Element}
  */
 export function Onboarding() {
+  const navigate = useNavigate()
   const carouselRef = useRef(null)
   const { currentStep, setStep, goToNextStep } = useStep(3)
 
@@ -62,8 +65,12 @@ export function Onboarding() {
   }, [currentStep, slideRefs])
 
   const handleNextClick = () => {
-    shouldAutoScrollRef.current = true
-    goToNextStep()
+    if (currentStep !== 3) {
+      shouldAutoScrollRef.current = true
+      goToNextStep()
+    } else {
+      navigate(ROUTES.HOMEPAGE)
+    }
   }
 
   return (

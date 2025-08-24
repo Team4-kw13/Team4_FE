@@ -15,14 +15,15 @@
 }
 
 .icon-container {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
-  width: 120%;
+  justify-items: end;
+  width: 408px;
   height: 265px;
-  margin-left: -10%;
 }
 
 .blur {

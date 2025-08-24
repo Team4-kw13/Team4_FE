@@ -25,7 +25,6 @@ function App() {
           <AppRouter />
         </div>
       )}
-      <Splash />
     </div>
   )
 }
