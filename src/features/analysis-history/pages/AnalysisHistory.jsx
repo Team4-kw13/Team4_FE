@@ -6,6 +6,7 @@ import { BackButton } from '@/components/back-button/BackButton'
 import { ScrollToTopButton } from '@/components/scroll-to-top-button/ScrollToTopButton'
 import { ContractAnalysisLoading } from '@/features/contract-analysis-result/components/ContractAnalysisLoading'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
+import { ROUTES } from '@/router/routes.constant'
 import { useStep } from '@/stores/useStep'
 
 import { AnalysisHistoryHighlight } from '../containers/AnalysisHistoryHighlight'
@@ -33,7 +34,7 @@ export const AnalysisHistory = () => {
     <div className={styles['container']}>
       <div className={styles['background']} />
       <nav className={styles['back-button']}>
-        <BackButton />
+        <BackButton to={ROUTES.LIST_CONTRACT} />
       </nav>
 
       <div ref={carouselRef} className={styles['carousel-container']}>

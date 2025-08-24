@@ -22,7 +22,7 @@ export function BackButton({ to, onClick }) {
       onClick()
       return
     }
-    navigate(to || -1)
+    navigate(to || -1, { replace: true })
   }
 
   return (

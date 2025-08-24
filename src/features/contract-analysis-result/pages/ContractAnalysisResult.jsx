@@ -9,7 +9,6 @@ import {
 } from '@/stores/AnalysisResultStep'
 
 import { ContractAnalysisHighlight } from '../containers/ContractAnalysisHighlight'
-import { ContractAnalysisSaveButton } from '../containers/ContractAnalysisSaveButton'
 import { ContractAnalysisSummary } from '../containers/ContractAnalysisSummary'
 import { ContractAnalysisTranslate } from '../containers/ContractAnalysisTranslate'
 
@@ -53,7 +52,6 @@ export const ContractAnalysisResult = () => {
           aria-label={'요약 섹션'}
         >
           <ContractAnalysisSummary containerRef={carouselRef} />
-          <ContractAnalysisSaveButton />
         </section>
       </div>
       {currentStep !== 3 && (
