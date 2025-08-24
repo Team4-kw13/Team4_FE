@@ -8,20 +8,31 @@ import { useHighlight } from './useHighlight'
 export const useFetchHighlightData = () => {
   const translationByPage = useTranslationByPage()
   const isNeedFetch = useIsNeedFetch()
+  const currentStep = useAnalysisResultCurrentStep()
+  const { fetchHighlightStaged } = useHighlight()
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const { fetchHighlightData } = useHighlight()
-  const currentStep = useAnalysisResultCurrentStep()
-
   useEffect(() => {
-    if (currentStep === 2 && isNeedFetch['page2'] && translationByPage) {
+    const ready =
+      translationByPage &&
+      ['page1', 'page2', 'page3'].every((k) => Array.isArray(translationByPage[k]))
+
+    if (currentStep === 2 && isNeedFetch.page2 && ready) {
+      let cancelled = false
       setIsLoading(true)
-      fetchHighlightData(translationByPage)
+
+      fetchHighlightStaged(translationByPage)
         .catch(console.error)
-        .finally(() => setIsLoading(false))
+        .finally(() => {
+          if (!cancelled) setIsLoading(false)
+        })
+
+      return () => {
+        cancelled = true
+      }
     }
-  }, [currentStep, isNeedFetch, translationByPage, fetchHighlightData])
+  }, [currentStep, isNeedFetch.page2, translationByPage, fetchHighlightStaged])
 
   return { isLoading }
 }

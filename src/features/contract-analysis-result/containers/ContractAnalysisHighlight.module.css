@@ -24,3 +24,12 @@
   font-weight: var(--font-list-detail-weight);
   color: var(--color-sub-text);
 }
+
+.loading-container {
+  margin: 0 36px;
+  aspect-ratio: 16 / 23;
+  border: 1px solid #b9b9b9;
+  background-color: white;
+  padding: 30.5px 18px;
+  border-radius: 18px;
+}

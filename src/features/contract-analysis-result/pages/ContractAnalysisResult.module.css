@@ -29,6 +29,10 @@
   min-height: calc(100svh - 82.5px);
 }
 
-.scroll-button {
-  margin: -17px 16px 0 auto;
+.scroll-down-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 3%;
+  opacity: 20%;
 }

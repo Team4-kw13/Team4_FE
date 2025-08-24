@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 18px;
   inset: 0;
   top: initial;
   width: 100%;
@@ -11,10 +12,14 @@
   background: white;
 }
 
-.loading-text {
-  margin-top: 24px;
+.title {
   font-size: var(--font-common-title-size);
   font-weight: var(--font-common-title-weight);
+}
+
+.loading-text {
+  font-size: var(--font-analysis-main-detail-size);
+  font-weight: var(--font-analysis-main-detail-weight);
 }
 
 .dot-container {
@@ -61,14 +66,4 @@
   100% {
     transform: translateY(0);
   }
-}
-
-.custom-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background: white;
 }

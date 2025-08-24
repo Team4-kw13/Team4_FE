@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { Loading } from '@/components/loading/Loading'
 import { PrimaryButton } from '@/components/primary-button/PrimaryButton'
 import { ROUTES } from '@/router/routes.constant'
 
@@ -10,18 +12,25 @@ import styles from './ContractAnalysisSaveButton.module.css'
 
 export const ContractAnalysisSaveButton = () => {
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(false)
+
   const { saveAnalysisData } = useSaveAnalysisData()
   const { saveAnalysisImage } = useSaveAnalysisImage()
 
   const handleSave = async () => {
+    setIsLoading(true)
     try {
       const { contractId } = await saveAnalysisData()
       await saveAnalysisImage(contractId)
       navigate(ROUTES.ANALYSIS_HISTORY(contractId))
     } catch (e) {
       console.error(e)
+    } finally {
+      setIsLoading(false)
     }
   }
+
+  if (isLoading) return <Loading />
 
   return (
     <PrimaryButton

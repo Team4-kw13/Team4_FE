@@ -28,6 +28,14 @@ export const useDocumentAnalysisStore = create((set) => ({
     setOcrPage: (pageKey, blocks) =>
       set((state) => ({ ocrByPage: { ...state.ocrByPage, [pageKey]: blocks ?? [] } })),
 
+    setTranslationPage: (pageKey, texts) =>
+      set((state) => ({
+        translationByPage: {
+          ...state.translationByPage,
+          [pageKey]: texts ?? [],
+        },
+      })),
+
     /** 번역문 텍스트 저장 */
     setTranslationByPage: (pages) => set(() => ({ translationByPage: { ...pages } })),
 
@@ -42,6 +50,14 @@ export const useDocumentAnalysisStore = create((set) => ({
 
     /** 하이라이트 포함 텍스트 수정 + 번역문 동기화 */
     setHighlightedTextByPage: (pages) => set(() => ({ highlightedTextByPage: { ...pages } })),
+
+    setHighlightedTextPage: (pageKey, texts) =>
+      set((state) => ({
+        highlightedTextByPage: {
+          ...state.highlightedTextByPage,
+          [pageKey]: texts ?? [],
+        },
+      })),
 
     updateHighlightedTextAndSync: (pageKey, targetIndex, newMarkedText) =>
       set((state) => {

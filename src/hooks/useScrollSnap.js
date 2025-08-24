@@ -25,7 +25,7 @@ export const useScrollSnap = (carouselRef, slideRefs, setStep) => {
           }
         })
       },
-      { root, rootMargin: '0px', threshold: 0.5 },
+      { root, rootMargin: '0px', threshold: [0.25, 0.5, 0.75] },
     )
 
     slideRefs.forEach((ref) => {
