@@ -1,9 +1,6 @@
-import { useEffect } from 'react'
-
 import { PrimaryButton } from '@/components/primary-button/PrimaryButton'
 import { TOTAL_IMAGE_COUNT } from '@/constants/imageCount'
 import { useUploadedImages } from '@/hooks/useUploadedImages'
-import { useUploadedImagesContext } from '@/stores/useUploadedImagesContext'
 
 import { ImageUploadButton } from '../components/ImageUploadButton'
 
@@ -26,12 +23,8 @@ import styles from './ContractAnalysisUpload.module.css'
 
 export const ContractAnalysisUpload = ({ goToNextStep }) => {
   const { items } = useUploadedImages()
-  const { clear } = useUploadedImagesContext()
 
-  useEffect(() => {
-    clear()
-  }, [])
-
+  console.log(items)
   return (
     <>
       <section className={styles['header']}>

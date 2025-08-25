@@ -40,6 +40,30 @@ export const ListLawyerList = () => {
       lawFirm: '법무법인 계란',
       description: '[4대 보험, 법인 설립] 계약서 작성, 계약 해지',
     },
+    {
+      id: 7,
+      title: '황지영',
+      lawFirm: '법무법인 계란',
+      description: '[4대 보험, 법인 설립] 계약서 작성, 계약 해지',
+    },
+    {
+      id: 8,
+      title: '김동균',
+      lawFirm: '법무법인 계란',
+      description: '[4대 보험, 법인 설립] 계약서 작성, 계약 해지',
+    },
+    {
+      id: 9,
+      title: '정지환',
+      lawFirm: '법무법인 계란',
+      description: '[4대 보험, 법인 설립] 계약서 작성, 계약 해지',
+    },
+    {
+      id: 10,
+      title: '박현지',
+      lawFirm: '법무법인 계란',
+      description: '[4대 보험, 법인 설립] 계약서 작성, 계약 해지',
+    },
   ]
 
   return (
