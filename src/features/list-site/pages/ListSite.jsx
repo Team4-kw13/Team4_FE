@@ -1,4 +1,5 @@
 import { BackButton } from '@/components/back-button/BackButton'
+import { ROUTES } from '@/router/routes.constant'
 
 import { ListSiteAdviceList } from '../components/ListSiteAdviceList'
 import { ListSiteHeader } from '../components/ListSiteHeader'
@@ -11,7 +12,7 @@ export const ListSite = () => {
   return (
     <div className={styles['container']}>
       <nav className={styles['back-button']}>
-        <BackButton />
+        <BackButton to={ROUTES.HOMEPAGE} />
       </nav>
       <ListSiteHeader />
 
