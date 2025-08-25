@@ -5,6 +5,7 @@ import { ContractAnalysisTooltip } from '@/components/analysis-tooltip/ContractA
 import { StepProgress } from '@/components/step-progress/StepProgress'
 import { UnderlineText } from '@/components/underline-text/UnderlineText'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
+import { useDocumentHistoryHighlight } from '@/stores/DocumentHistoryStore'
 import { useStep } from '@/stores/useStep'
 
 import { HighlightHistoryImageSlide } from '../components/HighlightHistoryImageSlide'
@@ -16,10 +17,11 @@ export const AnalysisHistoryHighlight = () => {
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
   const { currentStep, setStep, reset } = useStep()
+  const highlight = useDocumentHistoryHighlight()
 
   useEffect(() => {
     reset()
-  }, [])
+  }, [highlight, reset])
 
   useScrollSnap(carouselRef, slideRefs, setStep)
 
