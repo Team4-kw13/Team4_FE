@@ -27,9 +27,14 @@ export default function ListSiteAdviceItem({
       )}
 
       {showViewLink && (
-        <button className={styles.viewButton} onClick={onClick}>
+        <a
+          href={'https://www.immigration.go.kr/immigration/1530/subview.do'}
+          target='_blank'
+          className={styles.viewButton}
+          rel='noreferrer'
+        >
           보기
-        </button>
+        </a>
       )}
     </div>
   )
