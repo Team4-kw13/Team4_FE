@@ -22,7 +22,7 @@ export const AnalysisHistory = () => {
   const carouselRef = useRef(null)
   const slideRefs = [useRef(null), useRef(null), useRef(null)]
 
-  const { setStep, reset } = useStep()
+  const { currentStep, setStep, reset } = useStep()
   const { data, isLoading, isError } = useFetchHistoryData(contractId)
 
   useScrollSnap(carouselRef, slideRefs, setStep)
@@ -75,9 +75,11 @@ export const AnalysisHistory = () => {
         </section>
       </div>
 
-      <div className={styles['scroll-down-button']}>
-        <Icon name='scroll-down' width={44} height={16} />
-      </div>
+      {currentStep !== 3 && (
+        <div className={styles['scroll-down-button']}>
+          <Icon name='scroll-down' width={44} height={16} />
+        </div>
+      )}
     </div>
   )
 }
