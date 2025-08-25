@@ -19,6 +19,7 @@ export const ContractAnalysisLoading = ({ custom = false }) => {
 
   return (
     <div className={styles['container']}>
+      <div className={styles['background']} />
       <Icon name='note' width={120} height={124} />
       <p className={styles['loading-text']}>분석 중</p>
       <div className={styles['dot-container']}>
