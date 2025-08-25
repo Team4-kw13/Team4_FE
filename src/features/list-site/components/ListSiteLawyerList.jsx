@@ -13,13 +13,13 @@ export const ListSiteLawyerList = () => {
       showPhoneIcon: true,
     },
     {
-      title: '강영현',
+      title: '박경민',
       lawFirm: '법무법인 계란',
       description: '[4대 보험, 법인 설립] 계약서 작성, 계약 해지',
       showPhoneIcon: true,
     },
     {
-      title: '강영현',
+      title: '김현진',
       lawFirm: '법무법인 계란',
       description: '[4대 보험, 법인 설립] 계약서 작성, 계약 해지',
       showPhoneIcon: true,
