@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 24px 36px 8px;
+  margin: 0 36px 8px;
 }
 
 .left {
