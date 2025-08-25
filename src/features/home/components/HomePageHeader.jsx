@@ -12,7 +12,7 @@ export const HomePageHeader = () => {
 
       <Link to={ROUTES.MYPAGE} className={styles.right}>
         <Icon name='user' width={32} height={32} />
-        <span className={styles.name}>peng</span>
+        <span className={styles.name}>hanzip</span>
       </Link>
     </header>
   )
